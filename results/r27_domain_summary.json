@@ -1,0 +1,102 @@
+{
+ "ts": "2026-11-04T07:56:05.954001",
+ "rows": [
+  {
+   "domain": "COCO 256 (SD inpainting)",
+   "n": 1200,
+   "ours_clean_fail": 0.24919677734375,
+   "ours_detect_auc": 0.9324100694444445,
+   "ours_iou8": 0.6093324377920007,
+   "ours_iou4": 0.7376104593173105,
+   "ours_cov50": 0.86,
+   "wam_iou": 0.947,
+   "wam_detect_auc": 0.9969,
+   "source": "attackset_20261001_222447"
+  },
+  {
+   "domain": "EuroSAT \u536b\u661f",
+   "n": 200,
+   "ours_clean_fail": 0.205537109375,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.6179169268033169,
+   "ours_iou4": 0.7533481982113308,
+   "ours_cov50": null,
+   "wam_iou": 0.9402099586722881,
+   "wam_detect_auc": 0.9984749999999999,
+   "source": "data/xdomain/sat"
+  },
+  {
+   "domain": "FUNSD \u6587\u6863",
+   "n": 199,
+   "ours_clean_fail": 0.21050074591708542,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.6389068067724276,
+   "ours_iou4": 0.7764727096594944,
+   "ours_cov50": null,
+   "wam_iou": 0.9645418971143264,
+   "wam_detect_auc": 1.0,
+   "source": "data/xdomain/doc"
+  },
+  {
+   "domain": "Pokemon \u5361\u901a",
+   "n": 200,
+   "ours_clean_fail": 0.210712890625,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.6220518337066477,
+   "ours_iou4": 0.7730088512430899,
+   "ours_cov50": null,
+   "wam_iou": 0.9633557526773225,
+   "wam_detect_auc": 1.0,
+   "source": "data/xdomain/pokemon"
+  },
+  {
+   "domain": "COCO + LaMa (\u975e\u6269\u6563)",
+   "n": 200,
+   "ours_clean_fail": 0.247568359375,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.5791383321117443,
+   "ours_iou4": 0.7441703013253198,
+   "ours_cov50": null,
+   "wam_iou": 0.9669886246109869,
+   "wam_detect_auc": 0.997825,
+   "source": "attackset_20261001_222447"
+  },
+  {
+   "domain": "Smithsonian \u8774\u8776",
+   "n": 60,
+   "ours_clean_fail": 0.2287109375,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.6175587446114168,
+   "ours_iou4": 0.7624329565318075,
+   "ours_cov50": null,
+   "wam_iou": 0.9758974510871675,
+   "wam_detect_auc": 1.0,
+   "source": "huggan/smithsonian_butterflies_subset"
+  },
+  {
+   "domain": "\u771f\u5b9e\u9ad8\u6e05 640\u00d7480 (IP2P)",
+   "n": 140,
+   "ours_clean_fail": null,
+   "ours_detect_auc": null,
+   "ours_iou8": 0.7150845686314532,
+   "ours_iou4": 0.816166124759661,
+   "ours_cov50": 1.0,
+   "wam_iou": null,
+   "wam_detect_auc": null,
+   "source": "attackset_hires (16 base \u00d7 10 edits)"
+  }
+ ],
+ "total_samples": 2199,
+ "n_configs": 7,
+ "editors": [
+  "runwayml/stable-diffusion-inpainting",
+  "timbrooks/instruct-pix2pix",
+  "big-lama"
+ ],
+ "resolution_sweep": {
+  "256": 0.607,
+  "512": 0.763,
+  "1024": 0.867
+ },
+ "note": "COCO IoU8 \u4e3a r18 \u7684 0.609 (k=9+\u540e\u5904\u7406), \u4e0e r7 \u7684 0.348 (k=5 \u65e0\u540e\u5904\u7406) \u4e0d\u540c\u53e3\u5f84"
+}

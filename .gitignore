@@ -1,0 +1,15 @@
+# datasets, weights, papers and planning notes are not part of this repo
+data/
+paper/
+references/
+docs/
+*.pt
+*.pth
+*.ckpt
+EXPERIMENT_QUEUE.md
+HANDOFF.md
+.reasonix/
+
+# python
+__pycache__/
+*.pyc

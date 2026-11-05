@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "ts": "2026-11-04T07:45:48.274192",
+  "n": 199,
+  "domain": "doc",
+  "source": "data/xdomain/doc",
+  "editor": "runwayml/stable-diffusion-inpainting"
+ },
+ "wam": {
+  "bit_acc_clean": 1.0,
+  "bit_acc_att": 1.0,
+  "mask_clean": 0.9994744928038899,
+  "mask_att": 0.8190151986165263,
+  "detect_auc_maskarea": 1.0,
+  "loc_auc": 0.999821925692457,
+  "iou": 0.9645418971143264
+ },
+ "ours": {
+  "clean_fail": 0.21050074591708542,
+  "top_clean": 0.30193024139907493,
+  "top": 0.4780639107502885,
+  "contrast_clean": 0.09199166163128225,
+  "contrast": 0.2302507737174106,
+  "iou8": 0.6389068067724276,
+  "iou4": 0.7764727096594944
+ },
+ "runtime_sec": 17.5
+}

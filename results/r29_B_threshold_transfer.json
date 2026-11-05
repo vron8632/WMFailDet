@@ -1,0 +1,47 @@
+{
+ "result": {
+  "butterfly": {
+   "n": 60,
+   "FPR_top": 0.0,
+   "TPR_top": 0.8333333333333334,
+   "FPR_contrast": 0.06666666666666667,
+   "TPR_contrast": 0.9833333333333333
+  },
+  "sat": {
+   "n": 200,
+   "FPR_top": 0.0,
+   "TPR_top": 0.92,
+   "FPR_contrast": 0.005,
+   "TPR_contrast": 0.9
+  },
+  "doc": {
+   "n": 199,
+   "FPR_top": 0.005025125628140704,
+   "TPR_top": 0.864321608040201,
+   "FPR_contrast": 0.21608040201005024,
+   "TPR_contrast": 0.9899497487437185
+  },
+  "pokemon": {
+   "n": 200,
+   "FPR_top": 0.005,
+   "TPR_top": 0.845,
+   "FPR_contrast": 0.58,
+   "TPR_contrast": 1.0
+  },
+  "lama": {
+   "n": 200,
+   "FPR_top": 0.015,
+   "TPR_top": 0.97,
+   "FPR_contrast": 0.015,
+   "TPR_contrast": 0.905
+  }
+ },
+ "thresholds": {
+  "top": 0.41,
+  "contrast": 0.15,
+  "source": "COCO-256 clean p99 / grid search"
+ },
+ "meta": {
+  "ts": "2026-11-05T18:32:36.021129"
+ }
+}

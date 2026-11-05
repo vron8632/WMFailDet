@@ -1,0 +1,20 @@
+{
+ "meta": {
+  "ts": "2026-11-03T19:44:55.002203",
+  "n": 8,
+  "protocol": "attackset SD inpaint + bbox paste; \u8bc4\u4f30\u7edf\u4e00\u5230 256 \u5c3a\u5ea6",
+  "editguard_ckpt": "/media/oyp/\u5de5\u4f5c/Projects/042_image_forensic/edit-type-aware-watermark-defense/data/editguard/EditGuard-main/checkpoints/clean.pth",
+  "threshold": 0.2
+ },
+ "editguard": {
+  "iou": 0.9549426191263437,
+  "in_fail": 0.9978067983322914,
+  "out_fail": 0.13266372863274373,
+  "clean_area": 4.863739013671875e-05
+ },
+ "ours": {
+  "iou_8x8": 0.642422358178687,
+  "iou_4x4": 0.7853341287740211
+ },
+ "runtime_sec": 4.8
+}

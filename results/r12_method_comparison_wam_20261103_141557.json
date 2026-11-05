@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "ts": "2026-11-03T14:15:57.022568",
+  "n": 100,
+  "wam_ckpt": "/media/oyp/\u5de5\u4f5c/Projects/042_image_forensic/edit-type-aware-watermark-defense/data/wam/wam_mit.pth",
+  "protocol": "attackset SD inpaint + bbox paste (256x256)",
+  "wam_msg": "32-bit random per image",
+  "ours_workpoint": [
+   0.41,
+   0.15
+  ]
+ },
+ "wam": {
+  "bit_acc_clean": 1.0,
+  "bit_acc_att": 0.98,
+  "detect_auc_bitec": 0.525,
+  "detect_auc_maskarea": 0.9969,
+  "detect_tpr_at_acc": 0.05,
+  "loc_auc": 0.9983259509573154,
+  "iou": 0.9469654024091263,
+  "fpr_area_clean": 0.000656280517578125,
+  "mask_clean": 0.9983224838972091,
+  "mask_att": 0.729361039288342
+ },
+ "ours": {
+  "top_mean": 0.48392036229372026,
+  "contrast_mean": 0.16515493243932725,
+  "detect_rate_top": 0.77,
+  "detect_rate_contrast": 0.55,
+  "loc_auc": 0.9301336132969339,
+  "iou": 0.6071197063898983
+ },
+ "runtime_sec": 8.6
+}
