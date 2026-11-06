@@ -160,6 +160,13 @@ No images are shipped with this repository. The evaluation protocol uses:
 
 Any host image works as long as the auditor holds the same master key and the content ID.
 
+### Paths
+
+Each experiment script reads its datasets from module-level constants at the top of the file
+(`AS` for the COCO attack set, `XD`/`HIRES` for the cross-domain and high-resolution sets,
+`REPO`/`EG` for the vendored WAM and EditGuard checkouts). Point them at your own copies before
+running; `results/` is written automatically.
+
 ## Notes
 
 - The QIM step size `δ = 15` is the default; the localisation accuracy is largely independent of
