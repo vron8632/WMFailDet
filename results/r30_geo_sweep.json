@@ -1,0 +1,48 @@
+{
+ "meta": {
+  "n": 60,
+  "conditions": [
+   "scale_0.7",
+   "scale_0.8",
+   "scale_0.9",
+   "scale_1.1",
+   "scale_1.2",
+   "clean",
+   "rotate_1",
+   "rotate_2"
+  ],
+  "ts": "2026-11-06T17:20:09.286041",
+  "note": "stored wafe value = sync-success rate (low10<0.20); abstain rate = 1 - value"
+ },
+ "wafe_abstain_rate": {
+  "scale_0.7": 0.0833,
+  "scale_0.8": 0.2333,
+  "scale_0.9": 0.3167,
+  "scale_1.1": 0.3333,
+  "scale_1.2": 0.35,
+  "clean": 0.9833,
+  "rotate_1": 0.0,
+  "rotate_2": 0.0
+ },
+ "editguard_mask_area": {
+  "scale_0.7": 1.0,
+  "scale_0.8": 1.0,
+  "scale_0.9": 1.0,
+  "scale_1.1": 1.0,
+  "scale_1.2": 1.0,
+  "clean": 0.0002,
+  "rotate_1": 0.9999,
+  "rotate_2": 1.0
+ },
+ "wam_absence_score": {
+  "scale_0.7": 0.0011,
+  "scale_0.8": 0.001,
+  "scale_0.9": 0.001,
+  "scale_1.1": 0.001,
+  "scale_1.2": 0.0009,
+  "clean": 0.0009,
+  "rotate_1": 0.0017,
+  "rotate_2": 0.0039
+ },
+ "runtime_sec": 50.3
+}

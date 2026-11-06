@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "n": 60,
+  "dataset": "pokemon",
+  "protocol": "bbox paste 编辑, 同一检测/告警指标体系 (r30)",
+  "ts": "2026-11-06T17:19:03.491938"
+ },
+ "delta": 15,
+ "k_loc": 9,
+ "t_loc": 0.38,
+ "ours_coord": {
+  "n": 60,
+  "detect_auc": 1.0,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 0.9167,
+  "coverage_ge70": 0.6833,
+  "box_recall_median": 0.7988,
+  "area_ratio_mean": 0.9388,
+  "tag": "WAFE coord",
+  "after_jpeg85": 0.9742,
+  "geo_abstain_rate": 0.0,
+  "geo_worst_mean": 0.6335
+ },
+ "ours_matrix": {
+  "n": 60,
+  "detect_auc": 1.0,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 0.95,
+  "coverage_ge70": 0.7333,
+  "box_recall_median": 0.8183,
+  "area_ratio_mean": 0.9609,
+  "tag": "WAFE matrix",
+  "after_jpeg85": 0.9933
+ },
+ "seed42": {
+  "n": 60,
+  "detect_auc": 0.9997,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 0.9167,
+  "coverage_ge70": 0.6667,
+  "box_recall_median": 0.7812,
+  "area_ratio_mean": 0.9347,
+  "tag": "经典固定种子 QIM"
+ },
+ "lsb": {
+  "n": 60,
+  "detect_auc": 1.0,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 0.3833,
+  "coverage_ge70": 0.0667,
+  "box_recall_median": 0.4134,
+  "area_ratio_mean": 0.4355,
+  "tag": "LSB 脆弱水印",
+  "after_jpeg85": 0.4729
+ },
+ "wam": {
+  "n": 60,
+  "detect_auc": 0.5,
+  "detect_tpr_at1fpr": 0.0,
+  "coverage_ge50": 1.0,
+  "coverage_ge70": 1.0,
+  "box_recall_median": 1.0,
+  "area_ratio_mean": 1.0453,
+  "tag": "WAM（消息恢复作检测器）",
+  "bit_acc_clean": 1.0,
+  "bit_acc_edited": 1.0,
+  "detect_auc_msg": 0.5,
+  "detect_auc_maskarea": 1.0,
+  "detect_tpr_at1fpr_maskarea": 1.0,
+  "geo_scale_fpr1": 0.0,
+  "geo_scale_mean_score": 0.0004,
+  "geo_abstain_rate": 0.0,
+  "note_geo": "WAM 无拒答通道：缩放退化图的掩膜得分如上（对照 WAFE 触发 ABSTAIN）"
+ },
+ "editguard": {
+  "n": 60,
+  "detect_auc": 1.0,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 1.0,
+  "coverage_ge70": 1.0,
+  "box_recall_median": 1.0,
+  "area_ratio_mean": 1.0641,
+  "tag": "EditGuard（recovery mask）",
+  "detect_auc_maskarea": 1.0,
+  "geo_scale_fpr1": 1.0,
+  "geo_scale_mean_mask": 1.0,
+  "note_geo": "EditGuard 无拒答通道：缩放退化的干净图仍输出篡改掩膜（误报率如上）"
+ },
+ "runtime_sec": 22.8
+}

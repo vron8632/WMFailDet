@@ -1,0 +1,101 @@
+{
+ "meta": {
+  "n": 120,
+  "protocol": "COCO attackset, bbox paste 编辑, 同一检测/告警指标体系",
+  "ts": "2026-11-06T11:11:28.149655",
+  "note": "COCO n=120; trustmark subsampled n=60 (sliding-window cost)"
+ },
+ "delta": 15,
+ "k_loc": 9,
+ "t_loc": 0.38,
+ "ours_coord": {
+  "n": 120,
+  "detect_auc": 0.9614,
+  "detect_tpr_at1fpr": 0.85,
+  "coverage_ge50": 0.8583,
+  "coverage_ge70": 0.7833,
+  "box_recall_median": 0.976,
+  "area_ratio_mean": 1.2441,
+  "tag": "WAFE coord",
+  "after_jpeg85": 0.9624,
+  "geo_abstain_rate": 0.0,
+  "geo_worst_mean": 0.5122
+ },
+ "ours_matrix": {
+  "n": 120,
+  "detect_auc": 0.958,
+  "detect_tpr_at1fpr": 0.8,
+  "coverage_ge50": 0.8333,
+  "coverage_ge70": 0.7417,
+  "box_recall_median": 0.9455,
+  "area_ratio_mean": 1.2388,
+  "tag": "WAFE matrix",
+  "after_jpeg85": 0.9615
+ },
+ "seed42": {
+  "n": 120,
+  "detect_auc": 0.9701,
+  "detect_tpr_at1fpr": 0.7083,
+  "coverage_ge50": 0.825,
+  "coverage_ge70": 0.7667,
+  "box_recall_median": 0.9448,
+  "area_ratio_mean": 1.223,
+  "tag": "经典固定种子 QIM"
+ },
+ "lsb": {
+  "n": 120,
+  "detect_auc": 1.0,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 0.45,
+  "coverage_ge70": 0.2583,
+  "box_recall_median": 0.4381,
+  "area_ratio_mean": 0.4375,
+  "tag": "LSB 脆弱水印",
+  "after_jpeg85": 0.4889
+ },
+ "wam": {
+  "n": 120,
+  "detect_auc": 0.5167,
+  "detect_tpr_at1fpr": 0.0333,
+  "coverage_ge50": 1.0,
+  "coverage_ge70": 1.0,
+  "box_recall_median": 1.0,
+  "area_ratio_mean": 1.0729,
+  "tag": "WAM（消息恢复作检测器）",
+  "bit_acc_clean": 1.0,
+  "bit_acc_edited": 0.9846,
+  "detect_auc_msg": 0.5167,
+  "detect_auc_maskarea": 0.9938,
+  "detect_tpr_at1fpr_maskarea": 1.0,
+  "geo_scale_fpr1": 0.0,
+  "geo_scale_mean_score": 0.0009,
+  "geo_abstain_rate": 0.0,
+  "note_geo": "WAM 无拒答通道：缩放退化图的掩膜得分如上（对照 WAFE 触发 ABSTAIN）"
+ },
+ "editguard": {
+  "n": 120,
+  "detect_auc": 0.9996,
+  "detect_tpr_at1fpr": 1.0,
+  "coverage_ge50": 1.0,
+  "coverage_ge70": 1.0,
+  "box_recall_median": 1.0,
+  "area_ratio_mean": 1.1459,
+  "tag": "EditGuard（recovery mask）",
+  "detect_auc_maskarea": 0.9996,
+  "geo_scale_fpr1": 1.0,
+  "geo_scale_mean_mask": 1.0,
+  "note_geo": "EditGuard 无拒答通道：缩放退化的干净图仍输出篡改掩膜（误报率如上）"
+ },
+ "runtime_sec": 49.6,
+ "trustmark": {
+  "n": 60,
+  "detect_auc": 0.7583,
+  "detect_tpr_at1fpr": 0.5167,
+  "coverage_ge50": 1.0,
+  "coverage_ge70": 1.0,
+  "box_recall_median": 1.0,
+  "area_ratio_mean": 8.2326,
+  "tag": "TrustMark（secret 匹配 + 滑窗）",
+  "clean_present_rate": 1.0
+ }
+}

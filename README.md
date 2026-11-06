@@ -57,6 +57,37 @@ Design choices worth noting:
 | Cost | 0 weights, CPU, ~8 ms per image |
 | Evaluated on | 2199 samples, 5 domains, 3 editors (SD inpainting, IP2P, LaMa) |
 
+### Unified cross-method comparison (same protocol, same metrics, COCO `n`=120)
+
+Because pixel IoU favours mask-supervised localisers, we re-evaluate every baseline under
+**our** metric suite on the identical COCO subset (`code/r30_unified_compare.py`):
+
+| Method | Detect AUC | TPR@1% | Region coverage | Area ratio | Out-of-distribution geometry |
+|---|---|---|---|---|---|
+| WAFE (coord) | 0.961 | 85.0 % | 85.8 % | 1.24 | abstains 65--100 % |
+| WAFE (matrix) | 0.958 | 80.0 % | 83.3 % | 1.24 | -- |
+| WAM (presence mask) | 0.994 | 100 % | 100 % | 1.07 | no false alarm, no abstain output |
+| **WAM (message recovery)** | **0.517** | 3.3 % | 100 % | 1.07 | reports BENIGN |
+| EditGuard (recovery mask) | 1.000 | 100 % | 100 % | 1.15 | **flags the whole image as tampered (7/7 conditions)** |
+| TrustMark (secret + sliding window) | 0.758 | 51.7 % | 100 % | **8.23** | -- |
+| Fixed-seed QIM (no key) | 0.970 | 70.8 % | 82.5 % | 1.22 | -- |
+| LSB fragile watermark | 1.000 | 100 % | 45.0 % | 0.44 | AUC 0.49 after JPEG 85 |
+
+Three readings, all reported as-is:
+
+1. **Training-based methods genuinely win on coverage** -- that is what mask supervision buys, and we do not dispute it.
+2. **A watermark trained to *recover a message* cannot act as an edit detector**: WAM's bit-accuracy
+   score gives AUC 0.517 on COCO and exactly 0.500 on four further domains (its post-edit bit accuracy
+   stays ~100 %, indistinguishable from clean). "Alive" is not "judgeable".
+3. **Coverage must be read together with area ratio**: TrustMark's 128 px window alarm also scores 100 %
+   coverage, but its area ratio is 8.23 (256 px fits only 2x2 windows, so one alarm box ≈ the whole image).
+   Reporting coverage alone rewards over-circumscribing -- hence our three-metric protocol.
+
+Out-of-distribution geometry sweep (`code/r30_geo_sweep.py`, 7 conditions, `n`=60): EditGuard marks
+clean watermarked images as fully tampered in **all 7** conditions (mask area ratio 0.9999--1.0 vs 0.0002
+undistorted); WAM does not false-alarm but has no way to declare an input undecidable. WAFE abstains
+(65--92 % on scale round-trips at the 8x8 layer, 100 % on rotation; false-abstain rate 1.7 % on clean images).
+
 Pixel-level IoU of the training-free baseline (0.74–0.82 with the 4×4 layer) is lower than
 training-based localisers (WAM 0.91–0.97, EditGuard 0.90–0.97); region-level alarms are the intended
 output of this method, and pixel-level contours can be refined by stacking a trained localiser on
@@ -72,8 +103,10 @@ code/
   r7_keyed_scheme.py       # keyed scheme evaluation protocol (crop/paste, synthetic edits)
   r1..r29_*.py             # experiment scripts (delta sweep, geometry, domains, editors,
                            #   region alarm, resolution, security/wash-out, baselines, ...)
-results/                   # JSON outputs of the experiments above
-docs/                      # (not included in this repo)
+  r30_unified_compare.py   # cross-method comparison under one metric suite (WAM / EditGuard /
+                           #   TrustMark / fixed-seed QIM / LSB), COCO + 4 extra domains
+  r30_geo_sweep.py         # out-of-distribution geometry sweep (7 conditions x 3 methods)
+results/                   # JSON outputs, incl. r30_unified_compare_<domain>.json and r30_geo_sweep.json
 assets/framework.jpg       # method figure
 ```
 
