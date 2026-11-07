@@ -49,7 +49,7 @@ import r8_geometric as r8
 from r7_keyed_scheme import paste_edit
 
 R = f'{BASE}/results'
-FIG = f'{BASE}/figs'
+FIG = f'{BASE}/paper/latex/figs'
 os.makedirs(FIG, exist_ok=True)
 AS = ('/media/oyp/工作/Projects/042_image_forensic/watermark-mllm-robustness'
       '/results/attackset_20261001_222447')
@@ -169,7 +169,7 @@ def fig1():
         ax[2].add_patch(plt.Rectangle((pb[0], pb[1]), pb[2]-pb[0], pb[3]-pb[1],
                                       fill=False, edgecolor=P['green_dark'], lw=2.2,
                                       ls=(0, (4, 2)), zorder=6))
-    hm = ax[3].imshow(fail_i, cmap='magma', vmin=0, vmax=1,
+    hm = ax[3].imshow(fail_i, cmap='gray', vmin=0, vmax=1,
                       interpolation='nearest', aspect='equal')
 
     titles = ['(a) Host image', '(b) + Watermark', '(c) Edited',
@@ -182,7 +182,7 @@ def fig1():
         s.set_visible(True)
         s.set_linewidth(0.8)
     cb = fig.colorbar(hm, ax=ax[3], fraction=0.046, pad=0.02)
-    cb.set_label('failure prob.', fontsize=7)
+    cb.set_label('failure prob. (binary)', fontsize=7)
     cb.ax.tick_params(labelsize=6)
     cb.outline.set_linewidth(0.6)
     save_pub(fig, 'fig1_motivation', multipanel=True)
@@ -203,17 +203,17 @@ def fig3():
         tpr = [wc[key][f'{t}'].get('tpr_local') or wc[key][f'{t}'].get('tpr_edited') for t in ts]
         ax.plot(fpr, tpr, marker=mk, color=color, ms=3.2, lw=1.1, label=lab)
     for key, color, thr, lab in [('contrast', P['blue_main'], '0.15', 'contrast op.'),
-                                 ('top', P['red'], '0.41', 'top op.')]:
+                                 ('top', P['red'], '0.4', 'top op.')]:
         op = wc[key].get(thr)
         if op:
             y = op.get('tpr_local') or op.get('tpr_edited')
-            ax.plot([op['fpr_clean']], [y], marker='*', ms=10, color=color,
-                    markeredgecolor='white', markeredgewidth=0.6, zorder=5)
-            ax.annotate(f'{lab}\n(FPR 1%)', (op['fpr_clean'], y),
+            ax.plot([op['fpr_clean']], [y], marker='*', ms=11, color=color,
+                    markeredgecolor='white', markeredgewidth=0.8, zorder=8)
+            ax.annotate(f'{lab}\n(FPR {100*op["fpr_clean"]:.0f}%)', (op['fpr_clean'], y),
                         textcoords='offset points', xytext=(8, -6), fontsize=6, color=color)
     ax.set_xlabel('False positive rate on benign images')
     ax.set_ylabel('Detection rate on edited images')
-    ax.set_xlim(-0.02, 0.55)
+    ax.set_xlim(-0.004, 0.20)
     ax.set_ylim(0, 1.02)
     ax.legend(fontsize=6, loc='lower right')
     save_pub(fig, 'fig3_operating')
