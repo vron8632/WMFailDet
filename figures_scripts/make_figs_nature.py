@@ -209,8 +209,12 @@ def fig3():
             y = op.get('tpr_local') or op.get('tpr_edited')
             ax.plot([op['fpr_clean']], [y], marker='*', ms=11, color=color,
                     markeredgecolor='white', markeredgewidth=0.8, zorder=8)
+            # top 工作点在高处（0.84）：标注放右上；contrast 在低处（0.67）：标注放右下更远处
+            dx, dy = (14, 10) if key == 'top' else (16, -16)
             ax.annotate(f'{lab}\n(FPR {100*op["fpr_clean"]:.0f}%)', (op['fpr_clean'], y),
-                        textcoords='offset points', xytext=(8, -6), fontsize=6, color=color)
+                        textcoords='offset points', xytext=(dx, dy), fontsize=6, color=color,
+                        arrowprops=dict(arrowstyle='-', lw=0.4, color=color,
+                                        shrinkA=0, shrinkB=2))
     ax.set_xlabel('False positive rate on benign images')
     ax.set_ylabel('Detection rate on edited images')
     ax.set_xlim(-0.004, 0.20)
