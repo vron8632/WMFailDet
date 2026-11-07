@@ -1,4 +1,4 @@
-# WMFailDet — Watermark Failure as Evidence (WAFE)
+# WMFailDet — Watermark Failure as Evidence (WMFE)
 
 ![Method framework](assets/framework.jpg)
 
@@ -64,8 +64,8 @@ Because pixel IoU favours mask-supervised localisers, we re-evaluate every basel
 
 | Method | Detect AUC | TPR@1% | Region coverage | Area ratio | Out-of-distribution geometry |
 |---|---|---|---|---|---|
-| WAFE (coord) | 0.961 | 85.0 % | 85.8 % | 1.24 | abstains 65--100 % |
-| WAFE (matrix) | 0.958 | 80.0 % | 83.3 % | 1.24 | -- |
+| WMFE (coord) | 0.961 | 85.0 % | 85.8 % | 1.24 | abstains 65--100 % |
+| WMFE (matrix) | 0.958 | 80.0 % | 83.3 % | 1.24 | -- |
 | WAM (presence mask) | 0.994 | 100 % | 100 % | 1.07 | no false alarm, no abstain output |
 | **WAM (message recovery)** | **0.517** | 3.3 % | 100 % | 1.07 | reports BENIGN |
 | EditGuard (recovery mask) | 1.000 | 100 % | 100 % | 1.15 | **flags the whole image as tampered (7/7 conditions)** |
@@ -85,7 +85,7 @@ Three readings, all reported as-is:
 
 Out-of-distribution geometry sweep (`code/r30_geo_sweep.py`, 7 conditions, `n`=60): EditGuard marks
 clean watermarked images as fully tampered in **all 7** conditions (mask area ratio 0.9999--1.0 vs 0.0002
-undistorted); WAM does not false-alarm but has no way to declare an input undecidable. WAFE abstains
+undistorted); WAM does not false-alarm but has no way to declare an input undecidable. WMFE abstains
 (65--92 % on scale round-trips at the 8x8 layer, 100 % on rotation; false-abstain rate 1.7 % on clean images).
 
 Pixel-level IoU of the training-free baseline (0.74–0.82 with the 4×4 layer) is lower than

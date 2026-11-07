@@ -8,8 +8,8 @@
    其"图像级检测编辑"能力未被评测过。
 
 方法（同一 COCO attackset、同一 bbox paste 编辑协议）：
-  ours_coord   : WAFE（坐标 PRF 校验位 + top-10% 检测 + 连通域告警）
-  ours_matrix  : WAFE 变体（种子化矩阵校验位，尺寸耦合 -> 不能同步；其余同）
+  ours_coord   : WMFE（坐标 PRF 校验位 + top-10% 检测 + 连通域告警）
+  ours_matrix  : WMFE 变体（种子化矩阵校验位，尺寸耦合 -> 不能同步；其余同）
   seed42       : 经典固定种子方案（无密钥）+ 同一检测/告警管线
   lsb          : 经典 LSB 脆弱水印 + 同一检测/告警管线（非训练外部基线）
   wam          : WAM 检测（bit-EC 作检测器）+ 1-mask 作区域告警
@@ -145,7 +145,7 @@ def run_ours(items):
             det_c.append(stats_from_fail(f_c)); det_a.append(stats_from_fail(f_a))
             regs.append(region_metrics(f_a, bb, o.shape[:2]))
         au, tp = auc(det_c, det_a)
-        res[name] = summarize({'auc': au, 'tpr': tp}, regs, f'WAFE {kind}')
+        res[name] = summarize({'auc': au, 'tpr': tp}, regs, f'WMFE {kind}')
         # JPEG85 鲁棒性
         jc, ja, jr = [], [], []
         for sid, o, a, bb in items:
@@ -160,7 +160,7 @@ def run_ours(items):
         au2, tp2 = auc(jc, ja)
         res[name]['after_jpeg85'] = round(au2, 4)
         if kind == 'coord':
-            # 缩放往返 -> WAFE 的行为：low10 拒答率
+            # 缩放往返 -> WMFE 的行为：low10 拒答率
             abst, scores = 0, []
             for sid, o, a, bb in items[:40]:
                 key = ks.image_key(MASTER, sid)
@@ -258,7 +258,7 @@ def run_wam(items):
     au2, tp2 = auc(det_c_mask, det_a_mask)
     out['detect_auc_maskarea'] = round(au2, 4)
     out['detect_tpr_at1fpr_maskarea'] = round(tp2, 4)
-    # ---- 几何退化行为：缩放 0.8->1.0（WAFE 对此拒答），看 WAM 检测得分是否虚高 ----
+    # ---- 几何退化行为：缩放 0.8->1.0（WMFE 对此拒答），看 WAM 检测得分是否虚高 ----
     geo_clean, geo_att = [], []
     for sid, o, a, bb in items[:40]:
         H, W = o.shape[:2]
@@ -271,7 +271,7 @@ def run_wam(items):
     out['geo_scale_fpr1'] = round(float(np.mean(np.asarray(geo_clean) > 0.10)), 4)
     out['geo_scale_mean_score'] = round(float(np.mean(geo_clean)), 4)
     out['geo_abstain_rate'] = 0.0
-    out['note_geo'] = 'WAM 无拒答通道：缩放退化图的掩膜得分如上（对照 WAFE 触发 ABSTAIN）'
+    out['note_geo'] = 'WAM 无拒答通道：缩放退化图的掩膜得分如上（对照 WMFE 触发 ABSTAIN）'
     os.chdir(cwd)
     return {'wam': out}
 
@@ -331,7 +331,7 @@ def run_editguard(items):
         au, tp = auc(det_c, det_a)
         out = summarize({'auc': au, 'tpr': tp}, regs, 'EditGuard（recovery mask）')
         out['detect_auc_maskarea'] = round(au, 4)
-        # ---- 几何退化：对 clean 水印图做缩放往返（WAFE 拒答），看 EditGuard 是否虚报篡改 ----
+        # ---- 几何退化：对 clean 水印图做缩放往返（WMFE 拒答），看 EditGuard 是否虚报篡改 ----
         geo = []
         for sid, o, a, bb in items[:30]:
             H, W = o.shape[:2]

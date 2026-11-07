@@ -2,7 +2,7 @@
 """r30_geo_sweep: 分布外几何退化条件扫描（检验单一退化条件下的结论是否稳健）。
 
 对干净水印图施加退化(缩放往返 0.7/0.8/0.9/1.1/1.2、旋转 1°/2°)后:
-  WAFE:      low10 判据触发 ABSTAIN 的比例 (期望高) + 正常图的误拒率 (期望 0)
+  WMFE:      low10 判据触发 ABSTAIN 的比例 (期望高) + 正常图的误拒率 (期望 0)
   EditGuard: 恢复掩膜面积比 (>>1 即误报全图; 期望接近 1)
   WAM:       存在掩膜得分 (期望 ~0, 不误报; 但它没有拒答输出)
 """
@@ -32,7 +32,7 @@ def main(n=60):
     items = load_items(n)
     out = {'meta': {'n': len(items), 'conditions': list(CONDS) + ['clean', 'rotate_1', 'rotate_2'],
                     'ts': datetime.datetime.now().isoformat()}}
-    # ---- WAFE
+    # ---- WMFE
     abst = {c: [] for c in list(CONDS) + ['clean', 'rotate_1', 'rotate_2']}
     for sid, o, a, bb in items:
         key = ks.image_key(MASTER, sid)
@@ -43,7 +43,7 @@ def main(n=60):
             f = ks.fail_map(img8, key, DELTA, CHK, 'coord')
             abst[name].append(1.0 if low_quantile(f) >= 0.20 else 0.0)   # 1 = ABSTAIN (low10>=0.20)
     out['wafe_abstain_rate'] = {k: round(float(np.mean(v)), 4) for k, v in abst.items()}
-    print('WAFE abstain:', out['wafe_abstain_rate'])
+    print('WMFE abstain:', out['wafe_abstain_rate'])
 
     # ---- EditGuard & WAM
     eg = None
