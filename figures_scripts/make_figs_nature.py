@@ -240,8 +240,8 @@ def fig4():
     w = 0.36
     cov8 = [100*t8[n]['cov_ge50'] for n in names]
     cov4 = [100*t4[n]['cov_ge50'] for n in names]
-    ax[0].bar(x - w/2, cov8, w, color=P['neutral_light'], label='8×8 layer')
-    ax[0].bar(x + w/2, cov4, w, color=P['orange_soft'], label='4×4 layer')
+    ax[0].bar(x - w/2, cov8, w, color='#8896A6', edgecolor='#333333', linewidth=0.5, label='8×8 layer')
+    ax[0].bar(x + w/2, cov4, w, color=P['orange_dark'], edgecolor='#333333', linewidth=0.5, label='4×4 layer')
     # Label only the number the panel argues: the small-edit gap closure.
     ax[0].annotate(f'{cov8[0]:.0f}%', (x[0]-w/2, cov8[0]), xytext=(0, 3), textcoords='offset points',
                    ha='center', va='bottom', fontsize=6.5, color=P['neutral_dark'])
@@ -257,7 +257,7 @@ def fig4():
 
     iou8 = r14b['results']['d4=15_c4=(1, 1)']['iou_L8']
     iou4 = r14b['results']['d4=15_c4=(1, 1)']['iou_L4']
-    ax[1].bar([0, 1], [100*iou8, 100*iou4], 0.5, color=[P['neutral_light'], P['orange_soft']])
+    ax[1].bar([0, 1], [100*iou8, 100*iou4], 0.5, color=['#8896A6', P['orange_dark']], edgecolor='#333333', linewidth=0.5)
     ax[1].annotate(f'{100*iou8:.1f}', (0, 100*iou8), ha='center', va='bottom', fontsize=6.5)
     ax[1].annotate(f'{100*iou4:.1f}', (1, 100*iou4), ha='center', va='bottom', fontsize=6.5, color=P['orange_dark'])
     ax[1].set_xticks([0, 1])
