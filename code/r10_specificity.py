@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""G5 检测器特异性扩展 + 阈值校准（r5 的升级版：新统计量 + 同步/拒答 + 工作曲线）.
+"""G5 检测器特异性扩展 + 阈值校准（r5 的升级版：新统计量 + 同步/拒识 + 工作曲线）.
 
 r5 的旧结论: JPEG 全谱零误报, 但 crop90 失败率 49.9% ≈ 编辑区 (致命误报).
-G3 已修: 纯裁剪经 coord-PRF 同步后回到基线; 重采样则由检测器**拒答**.
+G3 已修: 纯裁剪经 coord-PRF 同步后回到基线; 重采样则由检测器**拒识**.
 G4 已换统计量: 图像级检测用 top-10% 块均值 (AUC 0.9742).
 
 本实验回答三件事:
   1 什么处理会被误报? 对 15 种非语义扰动, 用 clean 的 99% 分位定阈值, 报误报率 (FPR)
     与定位假阳性面积 (pred 区域占比);
   2 检测器工作曲线: 阈值 vs FPR(clean/扰动) vs TPR(真编辑), 给 AUC 与推荐工作点;
-  3 同步/拒答在特异性上的作用: crop(任意相位) 同步后应恢复"不误报"; rotate 应被拒答
-    而不是误报 (拒答率单列, 不计入 FPR).
+  3 同步/拒识在特异性上的作用: crop(任意相位) 同步后应恢复"不误报"; rotate 应被拒识
+    而不是误报 (拒识率单列, 不计入 FPR).
 
 数据: attackset_20261001 (n=300, 256x256); 真编辑 = 同 attackset 的 att 图 (bbox paste, 同 r6/r7)
 输出: results/r10_specificity_<ts>.json
@@ -187,7 +187,7 @@ def main():
 
     summary, calib = {}, {}
     print(f'\n{"扰动":20s} {"top":>7s} {"FPR_top":>8s} {"contrast":>9s} {"FPR_con":>8s} '
-          f'{"拒答":>6s} {"假阳性面积":>9s}')
+          f'{"拒识":>6s} {"假阳性面积":>9s}')
     for stat_name in ['top', 'contrast']:
         cs = np.array([r['perturb']['clean'][stat_name] for r in rows])
         thr_s = float(np.percentile(cs, 99))
@@ -215,7 +215,7 @@ def main():
                 'stat_ci95': float(1.96 * st.std() / np.sqrt(len(st))),
                 'fpr': fpr, 'abstain_rate': float(ab.mean()),
                 'false_area_mean': float(area.mean()),
-                'verdict': ('拒答' if ab.mean() > 0.5 else
+                'verdict': ('拒识' if ab.mean() > 0.5 else
                             ('误报风险高' if fpr > 0.20 else ('轻微' if fpr > 0.05 else '安全'))),
             }
         print(f'  --- 阈值 = clean p99 = {thr_s*100:.1f}% | TPR(all/local/full)='

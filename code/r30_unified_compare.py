@@ -160,7 +160,7 @@ def run_ours(items):
         au2, tp2 = auc(jc, ja)
         res[name]['after_jpeg85'] = round(au2, 4)
         if kind == 'coord':
-            # 缩放往返 -> WMFE 的行为：low10 拒答率
+            # 缩放往返 -> WMFE 的行为：low10 拒识率
             abst, scores = 0, []
             for sid, o, a, bb in items[:40]:
                 key = ks.image_key(MASTER, sid)
@@ -170,7 +170,7 @@ def run_ours(items):
                 back = np.array(Image.fromarray(small).resize((W, H), Image.BILINEAR))
                 fb = ks.fail_map(back, key, DELTA, CHK, 'coord')
                 low10 = float(np.sort(fb.ravel())[:max(1, int(0.10*fb.size))].mean())
-                # low10 判据: 平滑后最坏 10% 的失败率 < 0.20 => 信号消失 => 拒答
+                # low10 判据: 平滑后最坏 10% 的失败率 < 0.20 => 信号消失 => 拒识
                 smth = ks.smooth_fail_map(fb, K_LOC)
                 worst = float(np.sort(smth.ravel())[-max(1, int(0.10*smth.size)):].mean())
                 if worst < 0.20:
@@ -258,7 +258,7 @@ def run_wam(items):
     au2, tp2 = auc(det_c_mask, det_a_mask)
     out['detect_auc_maskarea'] = round(au2, 4)
     out['detect_tpr_at1fpr_maskarea'] = round(tp2, 4)
-    # ---- 几何退化行为：缩放 0.8->1.0（WMFE 对此拒答），看 WAM 检测得分是否虚高 ----
+    # ---- 几何退化行为：缩放 0.8->1.0（WMFE 对此拒识），看 WAM 检测得分是否虚高 ----
     geo_clean, geo_att = [], []
     for sid, o, a, bb in items[:40]:
         H, W = o.shape[:2]
@@ -271,7 +271,7 @@ def run_wam(items):
     out['geo_scale_fpr1'] = round(float(np.mean(np.asarray(geo_clean) > 0.10)), 4)
     out['geo_scale_mean_score'] = round(float(np.mean(geo_clean)), 4)
     out['geo_abstain_rate'] = 0.0
-    out['note_geo'] = 'WAM 无拒答通道：缩放退化图的掩膜得分如上（对照 WMFE 触发 ABSTAIN）'
+    out['note_geo'] = 'WAM 无拒识通道：缩放退化图的掩膜得分如上（对照 WMFE 触发 ABSTAIN）'
     os.chdir(cwd)
     return {'wam': out}
 
@@ -331,7 +331,7 @@ def run_editguard(items):
         au, tp = auc(det_c, det_a)
         out = summarize({'auc': au, 'tpr': tp}, regs, 'EditGuard（recovery mask）')
         out['detect_auc_maskarea'] = round(au, 4)
-        # ---- 几何退化：对 clean 水印图做缩放往返（WMFE 拒答），看 EditGuard 是否虚报篡改 ----
+        # ---- 几何退化：对 clean 水印图做缩放往返（WMFE 拒识），看 EditGuard 是否虚报篡改 ----
         geo = []
         for sid, o, a, bb in items[:30]:
             H, W = o.shape[:2]
@@ -345,7 +345,7 @@ def run_editguard(items):
         g = np.array(geo)
         out['geo_scale_fpr1'] = round(float((g > 0.01).mean()), 4)
         out['geo_scale_mean_mask'] = round(float(g.mean()), 4)
-        out['note_geo'] = 'EditGuard 无拒答通道：缩放退化的干净图仍输出篡改掩膜（误报率如上）'
+        out['note_geo'] = 'EditGuard 无拒识通道：缩放退化的干净图仍输出篡改掩膜（误报率如上）'
         return {'editguard': out}
     finally:
         os.chdir(cwd)

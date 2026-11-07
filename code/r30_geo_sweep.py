@@ -4,7 +4,7 @@
 对干净水印图施加退化(缩放往返 0.7/0.8/0.9/1.1/1.2、旋转 1°/2°)后:
   WMFE:      low10 判据触发 ABSTAIN 的比例 (期望高) + 正常图的误拒率 (期望 0)
   EditGuard: 恢复掩膜面积比 (>>1 即误报全图; 期望接近 1)
-  WAM:       存在掩膜得分 (期望 ~0, 不误报; 但它没有拒答输出)
+  WAM:       存在掩膜得分 (期望 ~0, 不误报; 但它没有拒识输出)
 """
 import sys, os, json, time, datetime
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

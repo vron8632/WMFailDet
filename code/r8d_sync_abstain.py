@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""G3-d 几何失同步的最终处置: 同步 + 拒答 (abstain), 以及"编辑+裁剪"后仍能定位.
+"""G3-d 几何失同步的最终处置: 同步 + 拒识 (abstain), 以及"编辑+裁剪"后仍能定位.
 
 r8/r8b/r8c 已定量:
   * 纯裁剪 (任意像素相位): coord-PRF + (块偏移×相位) 搜索 -> 失败率 50%→25%, 参数 100% 命中;
@@ -13,9 +13,9 @@ r8/r8b/r8c 已定量:
   阈值用错误密钥的零分布标定.
 
 实验:
-  A 各变换下 f*(正确 key) 与 f*(错误 key) 的分布 -> 同步成功率 / 假同步率 / 拒答率;
+  A 各变换下 f*(正确 key) 与 f*(错误 key) 的分布 -> 同步成功率 / 假同步率 / 拒识率;
   B "局部编辑 + 任意相位裁剪" 场景: 同步后 detect AUC / loc AUC / IoU 是否保持;
-  C 判定: 纯裁剪应 pass, crop_resize/rotate 应被正确拒答 (而不是 50% 误报).
+  C 判定: 纯裁剪应 pass, crop_resize/rotate 应被正确拒识 (而不是 50% 误报).
 
 输出: results/r8d_sync_abstain_<ts>.json
 用法: apjf-python r8d_sync_abstain.py [--n 120] [--n-b 100]
@@ -113,7 +113,7 @@ def main():
         'resize_round_0.5': lambda im: r8.t_resize_round(im, 0.5)[0],
     }
     # 相位搜索范围: 8 对齐裁剪的相位是 0; 只有任意偏移裁剪才需要全 64 相位.
-    # 对重采样类给更宽松的 1 相位搜索 (仍拒答, 见结果) 以控制成本.
+    # 对重采样类给更宽松的 1 相位搜索 (仍拒识, 见结果) 以控制成本.
     cond_phases = {'clean': 1, 'crop_align_0.9': 1, 'crop_arb_0.9': 8,
                    'crop_resize_0.9': 1, 'rotate_2': 1, 'resize_round_0.5': 1}
     rk = ks.random_keys(MASTER, 1)[0]
