@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "student": "r34 r41-seed0 alarm4 (COCO-trained)"
+ },
+ "domains": {
+  "lama": {
+   "n": 200,
+   "student": {
+    "iou": 0.26490551280873637,
+    "cov50": 0.26,
+    "area_ratio": 0.3552564516562645
+   },
+   "teacher4": {
+    "iou": 0.7452300835811342,
+    "cov50": 1.0,
+    "area_ratio": 0.9244828610420686
+   }
+  },
+  "hires_ip2p": {
+   "n": 140,
+   "student": {
+    "iou": 0.24639861322741805,
+    "cov50": 0.32142857142857145,
+    "area_ratio": 0.8558366068922449
+   },
+   "teacher4": {
+    "iou": 0.8186560770893853,
+    "cov50": 1.0,
+    "area_ratio": 0.9547303409149206
+   }
+  }
+ },
+ "cost": {
+  "params": 1928417,
+  "params_mb": 7.71,
+  "gpu_ms_per_image": 1.13,
+  "cpu_ms_per_image": 35.7,
+  "device": "cuda"
+ }
+}

@@ -90,66 +90,80 @@ def figD1():
 
 # =====================================================================
 def figD2():
-    d = json.load(open(f'{R}/r34_distill_matrix.json'))
-    groups = [('Teacher\n8×8', d['teachers']['teacher8'], P['neutral_light']),
-              ('Teacher\n4×4', d['teachers']['teacher4'], P['neutral_mid']),
-              ('Student\n(passive)', d['students']['student_alarm4'], P['blue_main']),
-              ('Fusion\nOR', d['fusion_or']['fusion_alarm4_or_teacher4'], P['teal']),
-              ('Student\n(GT upper)', d['students']['student_gt'], P['neutral_dark'])]
-    fig = plt.figure(figsize=(7.6, 2.9))
-    gs = GridSpec(1, 2, width_ratios=[1.25, 1], wspace=0.28)
-    # (a) 柱状 IoU + 覆盖
+    r34 = json.load(open(f'{R}/r34_distill_matrix.json'))
+    r41 = json.load(open(f'{R}/r41_seeds_fusion.json'))
+    r38 = json.load(open(f'{R}/r38_label_ablation.json'))
+    r40 = json.load(open(f'{R}/r40_erasure_attack.json'))
+    gt_upper = r38['labels']['bbox_gt']['iou_test']
+    groups = [
+        ('Teacher\n8×8', r34['teachers']['teacher8'], P['neutral_light']),
+        ('Teacher\n4×4', r34['teachers']['teacher4'], P['neutral_mid']),
+        ('Student\nB16', r34['students']['student_alarm4'], P['blue_soft']),
+        ('Student\nB32 (ours)', {'iou': r41['seeds']['summary']['mean'], 'cov50': r40['student_original']['cov50']}, P['blue_main']),
+        ('Fusion\nB32+teacher', {'iou': r41['fusion']['test']['iou'],
+                                        'cov50': r41['fusion']['test'].get('cov50', float('nan'))}, P['teal']),
+        ('GT-label\nupper', {'iou': gt_upper, 'cov50': r38['labels']['bbox_gt'].get('cov50', float('nan'))}, P['neutral_dark']),
+    ]
+    fig = plt.figure(figsize=(7.8, 2.9))
+    gs = GridSpec(1, 2, width_ratios=[1.35, 1], wspace=0.28)
     ax = fig.add_subplot(gs[0])
     x = np.arange(len(groups))
     ious = [g[1]['iou'] for g in groups]
-    covs = [g[1]['cov50'] for g in groups]
+    covs = [g[1].get('cov50') for g in groups]
     ax.bar(x, ious, 0.62, color=[g[2] for g in groups], edgecolor='#333', linewidth=0.5)
     for i, (iv, cv) in enumerate(zip(ious, covs)):
-        ax.text(i, iv + 0.012, f'{iv:.3f}', ha='center', fontsize=7)
-        ax.text(i, 0.03, f'cov\n{cv:.0%}', ha='center', fontsize=6, color='white')
-    ax.set_xticks(x); ax.set_xticklabels([g[0] for g in groups], fontsize=7)
+        ax.text(i, iv + 0.012, f'{iv:.3f}', ha='center', fontsize=6.8)
+        if cv is not None and cv == cv:
+            ax.text(i, 0.03, f'cov\n{cv:.0%}', ha='center', fontsize=5.8, color='white')
+    ax.set_xticks(x); ax.set_xticklabels([g[0] for g in groups], fontsize=6.0)
     ax.set_ylabel('Localization IoU'); ax.set_ylim(0, 1.0)
-    ax.set_title('(a) Groups on COCO-256 (n=200)', fontsize=8, loc='left')
-    # (b) 逐样本散点 teacher4 vs student
+    ax.set_title('(a) Groups on COCO-256 (train800/val200/test200)', fontsize=8, loc='left')
+    # (b) seeds scatter
     ax = fig.add_subplot(gs[1])
-    tp = np.array(d['students']['student_alarm4'].get('per_iou', []))
-    # per_iou 存的是学生; 教师的未存 -> 用学生 vs 无法散点. 改画学生 per_iou 分布 + 教师均值线
-    if len(tp):
-        ax.hist(tp, bins=20, color=P['blue_main'], alpha=0.75, label='Student', edgecolor='white')
-        ax.axvline(d['teachers']['teacher4']['iou'], color=P['red'], ls='--', lw=1.2,
-                   label=f"Teacher 4×4 ({d['teachers']['teacher4']['iou']:.3f})")
-        ax.axvline(d['students']['student_alarm4']['iou'], color=P['blue_main'], ls='-', lw=1.2,
-                   label=f"Student ({d['students']['student_alarm4']['iou']:.3f})")
-    ax.set_xlabel('Per-sample IoU'); ax.set_ylabel('Count')
-    ax.set_title('(b) Per-sample IoU distribution', fontsize=8, loc='left')
-    ax.legend(fontsize=6.5, frameon=False)
+    sd = [v['test_iou'] for k, v in r41['seeds'].items() if k.startswith('seed')]
+    ax.axhline(0.726, color=P['red'], ls='--', lw=1.2, label='Teacher 4×4 (0.726)')
+    ax.scatter(np.zeros(len(sd)) + np.random.uniform(-.06, .06, len(sd)), sd, s=34,
+               color=P['blue_main'], zorder=5, label='Student seeds')
+    ax.plot([-.25, .25], [np.mean(sd)] * 2, color=P['blue_main'], lw=1.6,
+            label=f'mean {np.mean(sd):.3f}±{np.std(sd, ddof=1):.3f}')
+    ax.set_xlim(-.4, .4); ax.set_xticks([]); ax.set_ylim(0.6, 0.85)
+    ax.set_ylabel('Test IoU')
+    ax.set_title('(b) Seed variance (base32)', fontsize=8, loc='left')
+    ax.legend(fontsize=6, frameon=False, loc='lower right')
     save(fig, 'figD2_distill')
 
 
 # =====================================================================
 def figD3():
-    d = json.load(open(f'{R}/r35_crossdomain.json'))
-    doms = ['coco'] + ['butterfly', 'sat', 'doc', 'pokemon']
-    names = ['COCO\n(in-domain)', 'Butterfly', 'Satellite', 'Document', 'Cartoon']
-    fig, ax = plt.subplots(figsize=(6.4, 2.6))
-    x = np.arange(len(doms)); w = 0.36
-    if 'coco' in d:
-        t = [d['coco']['teacher4']['iou']] + [d['domains'][k]['teacher4']['iou'] for k in doms[1:]]
-        s = [d['coco']['student']['iou']] + [d['domains'][k]['student']['iou'] for k in doms[1:]]
-    else:
-        t = [d['domains'][k]['teacher4']['iou'] for k in doms]
-        s = [d['domains'][k]['student']['iou'] for k in doms]
-    ax.bar(x - w/2, t, w, color=P['neutral_mid'], label='Teacher 4×4 (keyed)', edgecolor='#333', lw=0.5)
-    ax.bar(x + w/2, s, w, color=P['blue_main'], label='Student (passive)', edgecolor='#333', lw=0.5)
+    r35 = json.load(open(f'{R}/r35_crossdomain.json'))
+    r39 = json.load(open(f'{R}/r39_crossdomain_training.json'))
+    doms = [('coco', 'COCO\n(in-domain)'), ('butterfly', 'Butterfly'),
+            ('sat', 'Satellite'), ('doc', 'Document'), ('pokemon', 'Cartoon')]
+    def key_of(d, k):
+        for kk in d:
+            if k in kk:
+                return kk
+        return None
+    fig, ax = plt.subplots(figsize=(6.8, 2.6))
+    x = np.arange(len(doms)); w = 0.27
+    t, s1, s2 = [], [], []
+    for k, _ in doms:
+        if k == 'coco':
+            t.append(r35['coco']['teacher4']['iou']); s1.append(r35['coco']['student']['iou'])
+            s2.append(r39['joint']['coco']['iou'])
+        else:
+            t.append(r35['domains'][key_of(r35['domains'], k)]['teacher4']['iou'])
+            s1.append(r35['domains'][key_of(r35['domains'], k)]['student']['iou'])
+            s2.append(r39['joint'][key_of(r39['joint'], k)]['iou'])
+    ax.bar(x - w, t, w, color=P['neutral_mid'], label='Teacher 4×4 (keyed)', edgecolor='#333', lw=.5)
+    ax.bar(x, s1, w, color=P['blue_soft'], label='Student (COCO-only)', edgecolor='#333', lw=.5)
+    ax.bar(x + w, s2, w, color=P['blue_main'], label='Student (multi-domain)', edgecolor='#333', lw=.5)
     for i in range(len(doms)):
-        ax.text(i - w/2, t[i] + 0.015, f'{t[i]:.2f}', ha='center', fontsize=6.5)
-        ax.text(i + w/2, s[i] + 0.015, f'{s[i]:.2f}', ha='center', fontsize=6.5,
-                color=P['blue_main'] if s[i] >= 0.6 else P['red'])
-    ax.set_xticks(x); ax.set_xticklabels(names, fontsize=7.5)
-    ax.set_ylabel('Localization IoU'); ax.set_ylim(0, 1.02)
-    ax.legend(fontsize=7, frameon=False, loc='upper right')
-    ax.set_title('Cross-domain generalization (trained on COCO only, n=60/domain)',
-                 fontsize=8, loc='left')
+        ax.text(i + w, s2[i] + 0.015, f'{s2[i]:.2f}', ha='center', fontsize=6.2, color=P['blue_main'])
+    ax.set_xticks(x); ax.set_xticklabels([d[1] for d in doms], fontsize=7)
+    ax.set_ylabel('Localization IoU'); ax.set_ylim(0, 1.05)
+    ax.legend(fontsize=6.6, frameon=False, loc='upper right', ncol=1)
+    ax.set_title('Cross-domain: free pseudo-labels scale to new domains', fontsize=8, loc='left')
     save(fig, 'figD3_crossdomain')
 
 
@@ -188,6 +202,41 @@ def figD4():
     save(fig, 'figD4_degradation')
 
 
+def figD5():
+    r38 = json.load(open(f'{R}/r38_label_ablation.json'))
+    order = [('bbox_gt', 'Exact\nboxes\n(=GT)', P['neutral_dark']),
+             ('failure', 'Failure\n(free,\nours)', P['blue_main']),
+             ('bbox_noisy', 'Noisy\nboxes\n(human)', P['orange_dark']),
+             ('image_lvl', 'Image\nlevel', P['neutral_light']),
+             ('point', 'Point', P['neutral_light'])]
+    fig = plt.figure(figsize=(7.4, 2.7))
+    gs = GridSpec(1, 2, width_ratios=[1.5, 1], wspace=0.3)
+    ax = fig.add_subplot(gs[0])
+    labs, vals, cols = [], [], []
+    for k, lab, c in order:
+        if k in r38['labels']:
+            labs.append(lab); vals.append(r38['labels'][k]['iou_test']); cols.append(c)
+    x = np.arange(len(labs))
+    ax.bar(x, vals, 0.6, color=cols, edgecolor='#333', lw=.5)
+    for i, v in enumerate(vals):
+        ax.text(i, v + 0.015, f'{v:.3f}', ha='center', fontsize=6.8)
+    ax.set_xticks(x); ax.set_xticklabels(labs, fontsize=6.0)
+    ax.set_ylabel('Localization IoU'); ax.set_ylim(0, 1.0)
+    ax.set_title('(a) Supervision source (n=800)', fontsize=8, loc='left')
+    ax = fig.add_subplot(gs[1])
+    sc = [('n250', 250), ('n500', 500)]
+    xs = [250, 500, 800]
+    ys = [r38['scaling']['n250']['iou_test'], r38['scaling']['n500']['iou_test'],
+          r38['labels']['failure']['iou_test']]
+    ax.plot(xs, ys, 'o-', color=P['blue_main'], ms=4, lw=1.3)
+    for xx, yy in zip(xs, ys):
+        ax.text(xx, yy + 0.02, f'{yy:.3f}', ha='center', fontsize=6.5)
+    ax.set_xlabel('Free pseudo-labelled images'); ax.set_ylabel('Test IoU')
+    ax.set_xlim(150, 900); ax.set_ylim(0.35, 0.9)
+    ax.set_title('(b) Scaling of free labels', fontsize=8, loc='left')
+    save(fig, 'figD5_labels')
+
+
 if __name__ == '__main__':
-    figD1(); figD2(); figD3(); figD4()
+    figD1(); figD2(); figD3(); figD4(); figD5()
     print('ALL D2 FIGURES EXPORTED')
