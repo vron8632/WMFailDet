@@ -13,3 +13,8 @@ HANDOFF.md
 # python
 __pycache__/
 *.pyc
+
+# large experiment artifacts (regenerable via code/*.py)
+results/*.npz
+results/*.npy
+results/*.pth

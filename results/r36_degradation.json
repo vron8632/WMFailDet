@@ -1,0 +1,182 @@
+{
+ "meta": {
+  "n": 200,
+  "degradations": [
+   "clean",
+   "jpeg85",
+   "jpeg75",
+   "jpeg50",
+   "noise2",
+   "sharpen",
+   "resize0.8",
+   "rotate1",
+   "feather4"
+  ],
+  "student": "r34 SmallUNet alarm4 (COCO-trained)",
+  "teacher": "WMFE alarm4 + low10<0.20 \u53ef\u5224\u5b9a"
+ },
+ "results": {
+  "clean": {
+   "student": {
+    "iou": 0.7417477442787432,
+    "cov50": 0.91,
+    "area_ratio": 1.048389860021706
+   },
+   "teacher4_conservative": {
+    "iou": 0.6555828069291469,
+    "cov50": 0.89,
+    "area_ratio": 0.8598537335717018
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.7164839419990678,
+    "cov50": 0.9726775956284153,
+    "area_ratio": 0.9397308563625156
+   },
+   "teacher_abstain_rate": 0.085
+  },
+  "jpeg85": {
+   "student": {
+    "iou": 0.5240718765373716,
+    "cov50": 0.68,
+    "area_ratio": 0.832380531321203
+   },
+   "teacher4_conservative": {
+    "iou": 0.43397156883251625,
+    "cov50": 0.905,
+    "area_ratio": 1.9300310293690859
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.47428586757652047,
+    "cov50": 0.9890710382513661,
+    "area_ratio": 2.1093235293651214
+   },
+   "teacher_abstain_rate": 0.085
+  },
+  "jpeg75": {
+   "student": {
+    "iou": 0.4759517807930203,
+    "cov50": 0.655,
+    "area_ratio": 0.9808765785762416
+   },
+   "teacher4_conservative": {
+    "iou": 0.46798920425132196,
+    "cov50": 0.8,
+    "area_ratio": 1.5363902112632615
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.5114636112036305,
+    "cov50": 0.8743169398907104,
+    "area_ratio": 1.6791149849871707
+   },
+   "teacher_abstain_rate": 0.085
+  },
+  "jpeg50": {
+   "student": {
+    "iou": 0.3258318249960253,
+    "cov50": 0.68,
+    "area_ratio": 2.901730872778072
+   },
+   "teacher4_conservative": {
+    "iou": 0.07929660427176906,
+    "cov50": 0.305,
+    "area_ratio": 1.9060124236183038
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.240292740217482,
+    "cov50": 0.9242424242424242,
+    "area_ratio": 5.775795223085769
+   },
+   "teacher_abstain_rate": 0.67
+  },
+  "noise2": {
+   "student": {
+    "iou": 0.6592025162284054,
+    "cov50": 0.84,
+    "area_ratio": 1.0343021756940196
+   },
+   "teacher4_conservative": {
+    "iou": 0.6301381103043785,
+    "cov50": 0.9,
+    "area_ratio": 0.9389179373448467
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.6924594618729434,
+    "cov50": 0.989010989010989,
+    "area_ratio": 1.0317779531262052
+   },
+   "teacher_abstain_rate": 0.09
+  },
+  "sharpen": {
+   "student": {
+    "iou": 0.689968197735563,
+    "cov50": 0.965,
+    "area_ratio": 1.328970010594476
+   },
+   "teacher4_conservative": {
+    "iou": 0.06577299549263946,
+    "cov50": 0.265,
+    "area_ratio": 1.5407199965219953
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.2481999829910923,
+    "cov50": 1.0,
+    "area_ratio": 5.814037722724512
+   },
+   "teacher_abstain_rate": 0.735
+  },
+  "resize0.8": {
+   "student": {
+    "iou": 0.535018215720917,
+    "cov50": 0.84,
+    "area_ratio": 1.3759349673928916
+   },
+   "teacher4_conservative": {
+    "iou": 0.251957012129945,
+    "cov50": 0.75,
+    "area_ratio": 2.880939894868135
+   },
+   "teacher4_detectable_subset": {
+    "iou": 0.33371789686085424,
+    "cov50": 0.9933774834437086,
+    "area_ratio": 3.8158144302889205
+   },
+   "teacher_abstain_rate": 0.245
+  },
+  "rotate1": {
+   "student": {
+    "iou": 0.4948932745034396,
+    "cov50": 0.81,
+    "area_ratio": 1.5764773215571584
+   },
+   "teacher4_conservative": {
+    "iou": 0.0,
+    "cov50": 0.0,
+    "area_ratio": 0.0
+   },
+   "teacher4_detectable_subset": {
+    "iou": NaN,
+    "cov50": NaN,
+    "area_ratio": NaN
+   },
+   "teacher_abstain_rate": 1.0
+  },
+  "feather4": {
+   "student": {
+    "iou": 0.2687322681982357,
+    "cov50": 1.0,
+    "area_ratio": 8.551862980374674
+   },
+   "teacher4_conservative": {
+    "iou": 0.0,
+    "cov50": 0.0,
+    "area_ratio": 0.0
+   },
+   "teacher4_detectable_subset": {
+    "iou": NaN,
+    "cov50": NaN,
+    "area_ratio": NaN
+   },
+   "teacher_abstain_rate": 1.0
+  }
+ }
+}
