@@ -237,6 +237,53 @@ def figD5():
     save(fig, 'figD5_labels')
 
 
+def figD6():
+    r47 = json.load(open(f'{R}/r47_aux_distill.json'))
+    r48 = json.load(open(f'{R}/r48_iterative_refine.json'))
+    r49 = json.load(open(f'{R}/r49_mechanism.json'))
+    fig = plt.figure(figsize=(7.6, 2.6))
+    gs = GridSpec(1, 3, width_ratios=[1, 1, 1.05], wspace=0.34)
+    # (a) aux lambda sweep
+    ax = fig.add_subplot(gs[0])
+    lams = ['0.0', '0.1', '0.5', '1.0']
+    vals = [r47['runs'][f'lambda{l}']['test']['iou'] for l in lams]
+    ax.bar(np.arange(4), vals, 0.6, color=[P['neutral_light']] + [P['blue_main']]*3,
+           edgecolor='#333', lw=.5)
+    for i, v in enumerate(vals):
+        ax.text(i, v + 0.008, f'{v:.3f}', ha='center', fontsize=6.5)
+    ax.set_xticks(np.arange(4)); ax.set_xticklabels(['0\n(base)'] + lams[1:], fontsize=6.8)
+    ax.set_xlabel('aux-loss weight λ'); ax.set_ylabel('Test IoU'); ax.set_ylim(0.70, 0.82)
+    ax.set_title('(a) Auxiliary failure-map head', fontsize=8, loc='left')
+    # (b) iterative refinement rounds
+    ax = fig.add_subplot(gs[1])
+    xs = [0, 1, 2]
+    ys = [r48['rounds']['round0_baseline']['test']['iou'],
+          r48['rounds']['round1_refined']['test']['iou'],
+          r48['rounds']['round2_refined']['test']['iou']]
+    ax.plot(xs, ys, 'o-', color=P['red'], ms=5, lw=1.4)
+    for xx, yy in zip(xs, ys):
+        ax.text(xx, yy + 0.012, f'{yy:.3f}', ha='center', fontsize=6.5)
+    ax.set_xticks(xs); ax.set_xticklabels(['round 0\n(base)', 'round 1', 'round 2'], fontsize=6.8)
+    ax.set_xlabel('teacher-student refinement'); ax.set_ylabel('Test IoU')
+    ax.set_ylim(0.60, 0.85)
+    ax.set_title('(b) Iterative refinement (fails)', fontsize=8, loc='left')
+    # (c) in vs out failure rate
+    ax = fig.add_subplot(gs[2])
+    ax.bar([0, 1], [r49['clean_rate_mean'], r49['out_rate_mean']], 0.55,
+           color=[P['neutral_light'], P['neutral_mid']], edgecolor='#333', lw=.5,
+           label='outside edit / clean')
+    ax.bar([2], [r49['in_rate_mean']], 0.55, color=P['blue_main'], edgecolor='#333', lw=.5,
+           label='inside edit')
+    for i, v in enumerate([r49['clean_rate_mean'], r49['out_rate_mean'], r49['in_rate_mean']]):
+        ax.text(i, v + 0.012, f'{v:.3f}', ha='center', fontsize=6.5)
+    ax.axhline(0.5, color=P['red'], ls=':', lw=1)
+    ax.text(0.05, 0.515, 'random level', color=P['red'], fontsize=6)
+    ax.set_xticks([0, 1, 2]); ax.set_xticklabels(['clean', 'outside', 'inside'], fontsize=6.8)
+    ax.set_ylabel('Block failure rate'); ax.set_ylim(0, 0.62)
+    ax.set_title(f"(c) Failure saturation ({r49['consistency_frac_in_gt_out']:.0%} of images)", fontsize=8, loc='left')
+    save(fig, 'figD6_mechanism')
+
+
 if __name__ == '__main__':
-    figD1(); figD2(); figD3(); figD4(); figD5()
+    figD1(); figD2(); figD3(); figD4(); figD5(); figD6()
     print('ALL D2 FIGURES EXPORTED')

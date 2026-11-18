@@ -1,0 +1,36 @@
+{
+ "meta": {
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200,
+  "epochs": 80,
+  "seed": 0,
+  "mechanism": "teacher-student iterative label refinement"
+ },
+ "rounds": {
+  "round0_baseline": {
+   "test": {
+    "iou": 0.784,
+    "cov50": 0.95,
+    "area_ratio": 1.0706
+   },
+   "val": 0.8122
+  },
+  "round1_refined": {
+   "test": {
+    "iou": 0.7168,
+    "cov50": 0.95,
+    "area_ratio": 1.298
+   },
+   "val": 0.7517
+  },
+  "round2_refined": {
+   "test": {
+    "iou": 0.6551,
+    "cov50": 0.935,
+    "area_ratio": 1.3128
+   },
+   "val": 0.6913
+  }
+ }
+}

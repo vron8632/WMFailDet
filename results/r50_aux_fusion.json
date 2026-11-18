@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "lam": 0.1,
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200
+ },
+ "aux_student": {
+  "iou": 0.7713,
+  "cov50": 0.94,
+  "area_ratio": 1.1001
+ },
+ "fusion": {
+  "cfg": {
+   "a": 0.5,
+   "b": 0.5,
+   "tau": 0.4
+  },
+  "iou": 0.8024,
+  "cov50": 0.995,
+  "area_ratio": 1.1826
+ },
+ "reference": {
+  "baseline_student": 0.76,
+  "baseline_fusion_r41": 0.819,
+  "teacher": 0.726
+ }
+}
