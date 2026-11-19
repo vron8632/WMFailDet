@@ -1,0 +1,59 @@
+{
+ "meta": {
+  "n_train": 1600,
+  "n_val": 400,
+  "n_test": 400,
+  "val_iou": 0.6119,
+  "input": "RGB + expected check-bitplane (4ch)",
+  "label": "GT edit blocks (learns edit-caused failure, not mimic manual)"
+ },
+ "by_degradation": {
+  "clean": {
+   "n": 55,
+   "iou": 0.516,
+   "cov50": 0.3077,
+   "area_ratio": 0.3726
+  },
+  "jpeg85": {
+   "n": 59,
+   "iou": 0.5844,
+   "cov50": 0.3667,
+   "area_ratio": 0.4364
+  },
+  "jpeg75": {
+   "n": 44,
+   "iou": 0.6799,
+   "cov50": 0.5217,
+   "area_ratio": 0.4794
+  },
+  "jpeg50": {
+   "n": 71,
+   "iou": 0.6061,
+   "cov50": 0.4615,
+   "area_ratio": 0.4638
+  },
+  "noise2": {
+   "n": 61,
+   "iou": 0.6323,
+   "cov50": 0.3929,
+   "area_ratio": 0.4943
+  },
+  "sharpen": {
+   "n": 50,
+   "iou": 0.5879,
+   "cov50": 0.52,
+   "area_ratio": 0.6473
+  },
+  "resize0.8": {
+   "n": 60,
+   "iou": 0.593,
+   "cov50": 0.4828,
+   "area_ratio": 0.667
+  }
+ },
+ "overall": {
+  "iou": 0.5984,
+  "cov50": 0.435,
+  "area_ratio": 0.5063
+ }
+}

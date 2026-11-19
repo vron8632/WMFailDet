@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "pool": 3200,
+  "n_val": 400,
+  "n_test": 400,
+  "epochs": 80,
+  "student": "SmallUNet(base=32)",
+  "reference": {
+   "orig800": 0.775,
+   "gt_upper": 0.903,
+   "WAM": 0.947,
+   "EditGuard": 0.913
+  }
+ },
+ "scaling": {
+  "n800": {
+   "test": {
+    "iou": 0.8124,
+    "cov50": 0.96,
+    "area_ratio": 1.0229
+   },
+   "val": 0.8113
+  },
+  "n1600": {
+   "test": {
+    "iou": 0.853,
+    "cov50": 0.995,
+    "area_ratio": 1.0677
+   },
+   "val": 0.849
+  },
+  "n2400": {
+   "test": {
+    "iou": 0.8504,
+    "cov50": 0.9975,
+    "area_ratio": 1.1392
+   },
+   "val": 0.8555
+  },
+  "n3200": {
+   "test": {
+    "iou": 0.8556,
+    "cov50": 0.995,
+    "area_ratio": 1.1288
+   },
+   "val": 0.856
+  }
+ }
+}

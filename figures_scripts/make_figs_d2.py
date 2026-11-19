@@ -284,6 +284,52 @@ def figD6():
     save(fig, 'figD6_mechanism')
 
 
+def figD7():
+    r55 = json.load(open(f'{R}/r55_forensic_verdict.json'))
+    fig = plt.figure(figsize=(7.8, 2.7))
+    gs = GridSpec(1, 3, width_ratios=[1.05, 1, 1], wspace=0.32)
+    # (a) forensic cost per method
+    ax = fig.add_subplot(gs[0])
+    keys = ['teacher', 'student', 'fusion']
+    labs = ['Teacher', 'Student', 'Fusion']
+    miss = [r55['confusion'][k]['forensic_cost']['miss'] for k in keys]
+    fa = [r55['confusion'][k]['forensic_cost']['false_alarm'] for k in keys]
+    cons = [r55['confusion'][k]['forensic_cost']['conservative'] for k in keys]
+    x = np.arange(3)
+    ax.bar(x - 0.25, miss, 0.25, color=P['red'], label='miss (T->A)', edgecolor='#333', lw=.4)
+    ax.bar(x, fa, 0.25, color=P['orange_dark'], label='false alarm (A->T)', edgecolor='#333', lw=.4)
+    ax.bar(x + 0.25, cons, 0.25, color=P['neutral_light'], label='conservative', edgecolor='#333', lw=.4)
+    ax.set_xticks(x); ax.set_xticklabels(labs, fontsize=7)
+    ax.set_ylabel('Rate'); ax.set_ylim(0, 0.62)
+    ax.legend(fontsize=5.8, frameon=False)
+    ax.set_title('(a) Forensic error profile', fontsize=8, loc='left')
+    # (b) threshold sweep
+    ax = fig.add_subplot(gs[1])
+    sw = r55['threshold_sweep']
+    taus = sorted(float(k) for k in sw)
+    ax.plot(taus, [sw[f'{t:.2f}']['miss'] for t in taus], 'o-', color=P['red'], ms=3.5, lw=1.2, label='miss')
+    ax.plot(taus, [sw[f'{t:.2f}']['false_alarm'] for t in taus], 's-', color=P['orange_dark'], ms=3.5, lw=1.2, label='false alarm')
+    ax.plot(taus, [sw[f'{t:.2f}']['sum'] for t in taus], '^--', color=P['neutral_mid'], ms=3.5, lw=1.0, label='sum')
+    ax.set_xlabel('arbitration threshold τ'); ax.set_ylabel('Rate')
+    ax.legend(fontsize=6, frameon=False)
+    ax.set_title('(b) Evidence arbitration trade-off', fontsize=8, loc='left')
+    # (c) confusion matrix (fusion)
+    ax = fig.add_subplot(gs[2])
+    M = np.array(r55['confusion']['fusion']['matrix'], float)
+    Mn = M / M.sum(1, keepdims=True)
+    im = ax.imshow(Mn, cmap='Blues', vmin=0, vmax=1)
+    for i in range(3):
+        for j in range(3):
+            ax.text(j, i, f'{Mn[i,j]:.2f}', ha='center', va='center',
+                    fontsize=7, color='white' if Mn[i, j] > .5 else '#333')
+    ax.set_xticks(range(3)); ax.set_yticks(range(3))
+    ax.set_xticklabels(['A', 'T', 'I'], fontsize=7)
+    ax.set_yticklabels(['A', 'T', 'I'], fontsize=7)
+    ax.set_xlabel('predicted'); ax.set_ylabel('true')
+    ax.set_title('(c) 3-way verdict (fusion)', fontsize=8, loc='left')
+    save(fig, 'figD7_forensic_verdict')
+
+
 if __name__ == '__main__':
-    figD1(); figD2(); figD3(); figD4(); figD5(); figD6()
+    figD1(); figD2(); figD3(); figD4(); figD5(); figD6(); figD7()
     print('ALL D2 FIGURES EXPORTED')
