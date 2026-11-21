@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200,
+  "epochs": 80,
+  "seed": 0,
+  "split": "train800/val200/test200",
+  "labels": [
+   "failure",
+   "bbox_gt",
+   "bbox_noisy",
+   "point",
+   "image_lvl"
+  ]
+ },
+ "labels": {
+  "failure": {
+   "iou_test": 0.7749,
+   "iou_val": 0.7989
+  },
+  "bbox_gt": {
+   "iou_test": 0.9028,
+   "iou_val": 0.9107
+  },
+  "bbox_noisy": {
+   "iou_test": 0.6024,
+   "iou_val": 0.6381
+  },
+  "point": {
+   "iou_test": 0.0542,
+   "iou_val": 0.0481
+  },
+  "image_lvl": {
+   "iou_test": 0.2689,
+   "iou_val": 0.2996
+  }
+ },
+ "scaling": {
+  "n250": {
+   "iou_test": 0.4687,
+   "iou_val": 0.5116
+  },
+  "n500": {
+   "iou_test": 0.6148,
+   "iou_val": 0.6526
+  }
+ }
+}

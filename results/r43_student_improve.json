@@ -1,0 +1,47 @@
+{
+ "meta": {
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200,
+  "split": "train800/val200/test200"
+ },
+ "variants": {
+  "C_aug": {
+   "iou": 0.6152,
+   "cov50": 0.85,
+   "area_ratio": 1.186,
+   "cfg": {
+    "base": 16,
+    "epochs": 80,
+    "aug": true,
+    "swa_last": 0
+   }
+  },
+  "D_base32": {
+   "iou": 0.7583,
+   "cov50": 0.94,
+   "area_ratio": 1.0947,
+   "cfg": {
+    "base": 32,
+    "epochs": 80,
+    "aug": false,
+    "swa_last": 0
+   }
+  },
+  "E_full": {
+   "iou": 0.7444,
+   "cov50": 0.89,
+   "area_ratio": 1.0635,
+   "cfg": {
+    "base": 16,
+    "epochs": 160,
+    "aug": true,
+    "swa_last": 30
+   }
+  }
+ },
+ "best": {
+  "tag": "D_base32",
+  "test_iou": 0.7583
+ }
+}

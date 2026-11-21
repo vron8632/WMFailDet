@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "n_train": 2000,
+  "n_test": 400,
+  "student": "SmallUNet base32",
+  "theory": "n_b = A/b^2; finer labels should mainly help small edits"
+ },
+ "L2": {
+  "small": {
+   "n": 115,
+   "iou": 0.8754,
+   "cov50": 0.9826,
+   "area_ratio": 0.995
+  },
+  "mid": {
+   "n": 178,
+   "iou": 0.9451,
+   "cov50": 1.0,
+   "area_ratio": 1.01
+  },
+  "large": {
+   "n": 85,
+   "iou": 0.9785,
+   "cov50": 1.0,
+   "area_ratio": 1.008
+  },
+  "full": {
+   "n": 22,
+   "iou": 0.9903,
+   "cov50": 1.0,
+   "area_ratio": 1.008
+  },
+  "_overall": 0.9347
+ },
+ "L4": {
+  "small": {
+   "n": 125,
+   "iou": 0.7189,
+   "cov50": 0.968,
+   "area_ratio": 1.156
+  },
+  "mid": {
+   "n": 181,
+   "iou": 0.8752,
+   "cov50": 1.0,
+   "area_ratio": 1.095
+  },
+  "large": {
+   "n": 79,
+   "iou": 0.9373,
+   "cov50": 1.0,
+   "area_ratio": 1.053
+  },
+  "full": {
+   "n": 15,
+   "iou": 0.9615,
+   "cov50": 1.0,
+   "area_ratio": 1.032
+  },
+  "_overall": 0.8418
+ },
+ "gain_L2_minus_L4": {
+  "small": 0.1565,
+  "mid": 0.0699,
+  "large": 0.0412,
+  "full": 0.0288
+ },
+ "verdict": "prediction: gain(small) > gain(large); observed: {'small': 0.1565, 'mid': 0.0699, 'large': 0.0412, 'full': 0.0288}"
+}

@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "delta": 25,
+  "n_train": 2000,
+  "n_test": 400,
+  "label": "2x2 layer",
+  "baseline_delta15": "0.9335+-0.0017 (r63)"
+ },
+ "runs": {
+  "seed1": {
+   "iou": 0.9499,
+   "val": 0.9492,
+   "tiers": {
+    "small": {
+     "n": 115,
+     "iou": 0.905,
+     "cov50": 0.9826,
+     "area_ratio": 1.007
+    },
+    "mid": {
+     "n": 178,
+     "iou": 0.9582,
+     "cov50": 1.0,
+     "area_ratio": 1.013
+    },
+    "large": {
+     "n": 85,
+     "iou": 0.9826,
+     "cov50": 1.0,
+     "area_ratio": 1.007
+    },
+    "full": {
+     "n": 22,
+     "iou": 0.9912,
+     "cov50": 1.0,
+     "area_ratio": 1.007
+    }
+   }
+  },
+  "seed2": {
+   "iou": 0.9477,
+   "val": 0.9484,
+   "tiers": {
+    "small": {
+     "n": 115,
+     "iou": 0.9059,
+     "cov50": 0.9913,
+     "area_ratio": 1.01
+    },
+    "mid": {
+     "n": 178,
+     "iou": 0.9541,
+     "cov50": 1.0,
+     "area_ratio": 1.013
+    },
+    "large": {
+     "n": 85,
+     "iou": 0.9802,
+     "cov50": 1.0,
+     "area_ratio": 1.009
+    },
+    "full": {
+     "n": 22,
+     "iou": 0.9895,
+     "cov50": 1.0,
+     "area_ratio": 1.009
+    }
+   }
+  }
+ },
+ "summary": {
+  "ious": [
+   0.9498,
+   0.9499,
+   0.9477
+  ],
+  "mean": 0.9491,
+  "std": 0.0012
+ }
+}

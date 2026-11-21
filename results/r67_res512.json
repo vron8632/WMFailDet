@@ -1,0 +1,41 @@
+{
+ "meta": {
+  "n_train": 2000,
+  "n_test": 400,
+  "resolution": 512,
+  "base": 32,
+  "baseline_256": {
+   "overall": 0.9347,
+   "small": 0.8754
+  }
+ },
+ "res512": {
+  "overall": 0.9307,
+  "tiers": {
+   "small": {
+    "n": 115,
+    "iou": 0.865,
+    "cov50": 0.9826,
+    "area_ratio": 1.004
+   },
+   "mid": {
+    "n": 178,
+    "iou": 0.9424,
+    "cov50": 1.0,
+    "area_ratio": 0.998
+   },
+   "large": {
+    "n": 85,
+    "iou": 0.9793,
+    "cov50": 1.0,
+    "area_ratio": 1.001
+   },
+   "full": {
+    "n": 22,
+    "iou": 0.9909,
+    "cov50": 1.0,
+    "area_ratio": 1.004
+   }
+  }
+ }
+}

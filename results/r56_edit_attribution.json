@@ -1,0 +1,118 @@
+{
+ "meta": {
+  "n_train": 3200,
+  "n_test_in": 800,
+  "n_test_cross": 1190,
+  "classes": [
+   "remove",
+   "replace",
+   "add"
+  ],
+  "epochs": 25,
+  "labels": "parsed from instruction text (zero manual annotation)"
+ },
+ "in_domain": {
+  "rgb_only": {
+   "acc": 0.47,
+   "per_class": {
+    "remove": 0.241,
+    "replace": 0.569,
+    "add": 0.198
+   },
+   "matrix": [
+    [
+     32,
+     77,
+     24
+    ],
+    [
+     115,
+     325,
+     131
+    ],
+    [
+     23,
+     54,
+     19
+    ]
+   ]
+  },
+  "rgb_plus_fail": {
+   "acc": 0.7025,
+   "per_class": {
+    "remove": 0.023,
+    "replace": 0.979,
+    "add": 0.0
+   },
+   "matrix": [
+    [
+     3,
+     130,
+     0
+    ],
+    [
+     12,
+     559,
+     0
+    ],
+    [
+     3,
+     93,
+     0
+    ]
+   ]
+  }
+ },
+ "cross_domain": {
+  "rgb_only": {
+   "acc": 0.5975,
+   "per_class": {
+    "remove": 0.201,
+    "replace": 0.728,
+    "add": 0.0
+   },
+   "matrix": [
+    [
+     59,
+     217,
+     18
+    ],
+    [
+     194,
+     652,
+     50
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  "rgb_plus_fail": {
+   "acc": 0.6134,
+   "per_class": {
+    "remove": 0.007,
+    "replace": 0.812,
+    "add": 0.0
+   },
+   "matrix": [
+    [
+     2,
+     239,
+     53
+    ],
+    [
+     8,
+     728,
+     160
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}

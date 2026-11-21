@@ -1,0 +1,34 @@
+{
+ "meta": {
+  "n": 190,
+  "note": "8x8 layer; GT downsampled to block grid"
+ },
+ "in_rate_mean": 0.5014515453263333,
+ "out_rate_mean": 0.2594202996868836,
+ "clean_rate_mean": 0.24949629934210527,
+ "consistency_frac_in_gt_out": 0.9947368421052631,
+ "separation_mean": 0.24203124563944967,
+ "by_area": {
+  "small": {
+   "n": 61,
+   "in_rate": 0.5070289852189236,
+   "out_rate": 0.25225115921653685,
+   "sep": 0.25477782600238674
+  },
+  "mid": {
+   "n": 79,
+   "in_rate": 0.49945162293277207,
+   "out_rate": 0.25835790607748155,
+   "sep": 0.24109371685529057
+  },
+  "large": {
+   "n": 50,
+   "in_rate": 0.49780694603919984,
+   "out_rate": 0.269845232963562,
+   "sep": 0.2279617130756378
+  }
+ },
+ "corr_spatialcorr_vs_inrate": 0.10277148146039519,
+ "corr_p_spatialcorr": 0.1582452322318942,
+ "corr_area_vs_inrate": -0.03152741454989514
+}

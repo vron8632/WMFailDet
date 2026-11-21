@@ -1,0 +1,59 @@
+{
+ "meta": {
+  "n_train": 1600,
+  "n_val": 400,
+  "n_test": 400,
+  "val_iou": 0.7045,
+  "input": "RGB + bitplane + manual-failure prior (5ch, residual learning)",
+  "label": "GT edit blocks (learns edit-caused failure, not mimic manual)"
+ },
+ "by_degradation": {
+  "clean": {
+   "n": 49,
+   "iou": 0.7668,
+   "cov50": 0.7667,
+   "area_ratio": 0.7006
+  },
+  "jpeg85": {
+   "n": 61,
+   "iou": 0.6949,
+   "cov50": 0.4375,
+   "area_ratio": 0.4727
+  },
+  "jpeg75": {
+   "n": 57,
+   "iou": 0.6971,
+   "cov50": 0.3333,
+   "area_ratio": 0.4348
+  },
+  "jpeg50": {
+   "n": 65,
+   "iou": 0.5852,
+   "cov50": 0.2727,
+   "area_ratio": 0.3512
+  },
+  "noise2": {
+   "n": 48,
+   "iou": 0.7133,
+   "cov50": 0.4348,
+   "area_ratio": 0.472
+  },
+  "sharpen": {
+   "n": 58,
+   "iou": 0.5336,
+   "cov50": 0.4118,
+   "area_ratio": 0.4406
+  },
+  "resize0.8": {
+   "n": 62,
+   "iou": 0.6875,
+   "cov50": 0.5,
+   "area_ratio": 0.49
+  }
+ },
+ "overall": {
+  "iou": 0.6639,
+  "cov50": 0.46,
+  "area_ratio": 0.4857
+ }
+}

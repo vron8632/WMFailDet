@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "ts": "2026-11-03T19:50:31.463478",
+  "n": 60,
+  "dataset": "Smithsonian butterflies (xdomain, 256x256)",
+  "editor": "runwayml/stable-diffusion-inpainting",
+  "protocol": "\u4e0e attackset \u76f8\u540c: bbox paste + 256x256"
+ },
+ "wam": {
+  "bit_acc_clean": 0.9994791666666667,
+  "bit_acc_att": 0.9994791666666667,
+  "mask_clean": 0.9996047725280126,
+  "mask_att": 0.8175579299529393,
+  "detect_auc_maskarea": 1.0,
+  "loc_auc": 0.9999119261212471,
+  "iou": 0.9758974510871675
+ },
+ "ours": {
+  "clean_fail": 0.2287109375,
+  "top_clean": 0.32324698120355605,
+  "top": 0.4749294236302376,
+  "contrast_clean": 0.09372023443380992,
+  "contrast": 0.21104053656260172,
+  "iou8": 0.6175587446114168,
+  "iou4": 0.7624329565318075
+ },
+ "runtime_sec": 6.9
+}

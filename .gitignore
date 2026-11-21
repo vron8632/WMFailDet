@@ -1,0 +1,20 @@
+# datasets, weights, papers and planning notes are not part of this repo
+data/
+paper/
+references/
+docs/
+*.pt
+*.pth
+*.ckpt
+EXPERIMENT_QUEUE.md
+HANDOFF.md
+.reasonix/
+
+# python
+__pycache__/
+*.pyc
+
+# large experiment artifacts (regenerable via code/*.py)
+results/*.npz
+results/*.npy
+results/*.pth

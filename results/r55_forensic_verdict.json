@@ -1,0 +1,217 @@
+{
+ "meta": {
+  "n_items": 800,
+  "n_per_cond": 100,
+  "tau_contrast": 0.15,
+  "conditions": [
+   "clean_jpeg85",
+   "clean_noise1",
+   "edited",
+   "edited_jpeg75",
+   "feather4",
+   "jpeg50",
+   "resize08",
+   "rot1"
+  ],
+  "tau_area": 0.1052,
+  "tau_conf": 0.3,
+  "note": "student thresholds calibrated coarsely; paper should calibrate on val"
+ },
+ "confusion": {
+  "teacher": {
+   "matrix": [
+    [
+     27,
+     171,
+     2
+    ],
+    [
+     0,
+     152,
+     48
+    ],
+    [
+     0,
+     24,
+     376
+    ]
+   ],
+   "accuracy": 0.6937,
+   "recall_by_class": {
+    "A": 0.135,
+    "T": 0.76,
+    "I": 0.94
+   },
+   "forensic_cost": {
+    "correct": 0.6937,
+    "miss": 0.0,
+    "false_alarm": 0.2137,
+    "conservative": 0.0925,
+    "dangerous_error_rate": 0.2137,
+    "n": 800
+   }
+  },
+  "student": {
+   "matrix": [
+    [
+     140,
+     13,
+     47
+    ],
+    [
+     59,
+     139,
+     2
+    ],
+    [
+     71,
+     328,
+     1
+    ]
+   ],
+   "accuracy": 0.35,
+   "recall_by_class": {
+    "A": 0.7,
+    "T": 0.695,
+    "I": 0.003
+   },
+   "forensic_cost": {
+    "correct": 0.35,
+    "miss": 0.0737,
+    "false_alarm": 0.0163,
+    "conservative": 0.56,
+    "dangerous_error_rate": 0.09,
+    "n": 800
+   }
+  },
+  "fusion": {
+   "matrix": [
+    [
+     125,
+     73,
+     2
+    ],
+    [
+     13,
+     139,
+     48
+    ],
+    [
+     0,
+     24,
+     376
+    ]
+   ],
+   "accuracy": 0.8,
+   "recall_by_class": {
+    "A": 0.625,
+    "T": 0.695,
+    "I": 0.94
+   },
+   "forensic_cost": {
+    "correct": 0.8,
+    "miss": 0.0163,
+    "false_alarm": 0.0912,
+    "conservative": 0.0925,
+    "dangerous_error_rate": 0.1075,
+    "n": 800
+   }
+  }
+ },
+ "per_condition": {
+  "clean_jpeg85": {
+   "n": 100,
+   "label": "A",
+   "teacher": 0.18,
+   "student": 0.79,
+   "fusion": 0.69
+  },
+  "clean_noise1": {
+   "n": 100,
+   "label": "A",
+   "teacher": 0.09,
+   "student": 0.61,
+   "fusion": 0.56
+  },
+  "edited": {
+   "n": 100,
+   "label": "T",
+   "teacher": 0.75,
+   "student": 0.69,
+   "fusion": 0.66
+  },
+  "edited_jpeg75": {
+   "n": 100,
+   "label": "T",
+   "teacher": 0.77,
+   "student": 0.7,
+   "fusion": 0.73
+  },
+  "feather4": {
+   "n": 100,
+   "label": "I",
+   "teacher": 1.0,
+   "student": 0.0,
+   "fusion": 1.0
+  },
+  "jpeg50": {
+   "n": 100,
+   "label": "I",
+   "teacher": 0.98,
+   "student": 0.0,
+   "fusion": 0.98
+  },
+  "resize08": {
+   "n": 100,
+   "label": "I",
+   "teacher": 0.78,
+   "student": 0.01,
+   "fusion": 0.78
+  },
+  "rot1": {
+   "n": 100,
+   "label": "I",
+   "teacher": 1.0,
+   "student": 0.0,
+   "fusion": 1.0
+  }
+ },
+ "cost_definition": "fusion uses a second evidence (contrast) to arbitrate; abstention in either direction is conservative",
+ "threshold_sweep": {
+  "0.10": {
+   "miss": 0.0,
+   "false_alarm": 0.2137,
+   "sum": 0.2137
+  },
+  "0.15": {
+   "miss": 0.0,
+   "false_alarm": 0.2137,
+   "sum": 0.2137
+  },
+  "0.20": {
+   "miss": 0.0163,
+   "false_alarm": 0.0912,
+   "sum": 0.1075
+  },
+  "0.25": {
+   "miss": 0.0525,
+   "false_alarm": 0.0638,
+   "sum": 0.1163
+  },
+  "0.30": {
+   "miss": 0.0675,
+   "false_alarm": 0.0638,
+   "sum": 0.1313
+  },
+  "0.40": {
+   "miss": 0.0737,
+   "false_alarm": 0.0638,
+   "sum": 0.1375
+  },
+  "0.50": {
+   "miss": 0.0737,
+   "false_alarm": 0.0638,
+   "sum": 0.1375
+  }
+ }
+}

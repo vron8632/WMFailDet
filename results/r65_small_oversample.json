@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "n_train": 2000,
+  "n_test": 400,
+  "base": 32,
+  "note": "small-edit oversampling for the weak tier"
+ },
+ "smallx2": {
+  "overall": 0.9249,
+  "tiers": {
+   "small": {
+    "n": 115,
+    "iou": 0.8602,
+    "cov50": 0.9826,
+    "area_ratio": 1.011
+   },
+   "mid": {
+    "n": 178,
+    "iou": 0.936,
+    "cov50": 0.9944,
+    "area_ratio": 1.013
+   },
+   "large": {
+    "n": 85,
+    "iou": 0.9725,
+    "cov50": 1.0,
+    "area_ratio": 1.01
+   },
+   "full": {
+    "n": 22,
+    "iou": 0.9887,
+    "cov50": 1.0,
+    "area_ratio": 1.01
+   }
+  }
+ },
+ "smallx3": {
+  "overall": 0.9275,
+  "tiers": {
+   "small": {
+    "n": 115,
+    "iou": 0.8631,
+    "cov50": 0.9826,
+    "area_ratio": 0.954
+   },
+   "mid": {
+    "n": 178,
+    "iou": 0.938,
+    "cov50": 0.9944,
+    "area_ratio": 0.993
+   },
+   "large": {
+    "n": 85,
+    "iou": 0.9764,
+    "cov50": 1.0,
+    "area_ratio": 0.997
+   },
+   "full": {
+    "n": 22,
+    "iou": 0.9898,
+    "cov50": 1.0,
+    "area_ratio": 1.005
+   }
+  }
+ }
+}

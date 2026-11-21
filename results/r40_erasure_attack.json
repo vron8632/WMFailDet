@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "n": 200,
+  "attack": "restore 4x4-layer DCT(1,1) coef in edit region",
+  "student": "r34 SmallUNet alarm4"
+ },
+ "teacher_original": {
+  "iou": 0.7264267368366402,
+  "cov50": 0.975,
+  "area_ratio": 0.9575390536071606
+ },
+ "teacher_attacked": {
+  "iou": 0.05512544325206844,
+  "cov50": 0.0,
+  "area_ratio": 0.11622387321817408
+ },
+ "student_original": {
+  "iou": 0.7583168921055649,
+  "cov50": 0.94,
+  "area_ratio": 1.094682660938914
+ },
+ "student_attacked": {
+  "iou": 0.34333908930607976,
+  "cov50": 0.335,
+  "area_ratio": 0.5159963179782164
+ },
+ "attack_visual_cost": 37.787669083013235
+}

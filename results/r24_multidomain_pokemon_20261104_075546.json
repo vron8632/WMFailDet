@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "ts": "2026-11-04T07:55:46.572664",
+  "n": 200,
+  "domain": "pokemon",
+  "source": "data/xdomain/pokemon",
+  "editor": "runwayml/stable-diffusion-inpainting"
+ },
+ "wam": {
+  "bit_acc_clean": 0.999375,
+  "bit_acc_att": 0.99953125,
+  "mask_clean": 0.9996924802660943,
+  "mask_att": 0.8184998235106469,
+  "detect_auc_maskarea": 1.0,
+  "loc_auc": 0.9997513824609178,
+  "iou": 0.9633557526773225
+ },
+ "ours": {
+  "clean_fail": 0.210712890625,
+  "top_clean": 0.3038543827831745,
+  "top": 0.47549203351140024,
+  "contrast_clean": 0.09305191569030286,
+  "contrast": 0.2297821594774723,
+  "iou8": 0.6220518337066477,
+  "iou4": 0.7730088512430899
+ },
+ "runtime_sec": 17.3
+}

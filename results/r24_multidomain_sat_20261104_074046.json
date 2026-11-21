@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "ts": "2026-11-04T07:40:46.496773",
+  "n": 200,
+  "domain": "sat",
+  "source": "data/xdomain/sat",
+  "editor": "runwayml/stable-diffusion-inpainting"
+ },
+ "wam": {
+  "bit_acc_clean": 0.99984375,
+  "bit_acc_att": 0.99984375,
+  "mask_clean": 0.9947314873337746,
+  "mask_att": 0.8117893081903458,
+  "detect_auc_maskarea": 0.9984749999999999,
+  "loc_auc": 0.9990762938160668,
+  "iou": 0.9402099586722881
+ },
+ "ours": {
+  "clean_fail": 0.205537109375,
+  "top_clean": 0.2980168130993843,
+  "top": 0.46709697470068934,
+  "contrast_clean": 0.09249212369322776,
+  "contrast": 0.22410315029323102,
+  "iou8": 0.6179169268033169,
+  "iou4": 0.7533481982113308
+ },
+ "runtime_sec": 19.8
+}

@@ -1,0 +1,54 @@
+{
+ "meta": {
+  "n_train": 1200,
+  "n_test_in": 2289,
+  "n_test_cross": 1190,
+  "features": [
+   "area",
+   "fill_ratio",
+   "boundary_complex",
+   "aspect",
+   "n_components",
+   "largest_frac",
+   "fail_mean",
+   "fail_std"
+  ],
+  "task": "remove vs replace (balanced)"
+ },
+ "models": {
+  "logreg": {
+   "in_domain": {
+    "acc": 0.4862,
+    "auc": 0.5402,
+    "n": 2289
+   },
+   "cross_domain": {
+    "acc": 0.4748,
+    "auc": 0.5158,
+    "n": 1190
+   },
+   "coef": {
+    "area": 0.218,
+    "fill_ratio": -0.35,
+    "boundary_complex": 0.151,
+    "aspect": 0.045,
+    "n_components": -0.119,
+    "largest_frac": 0.116,
+    "fail_mean": 0.171,
+    "fail_std": -0.157
+   }
+  },
+  "rf": {
+   "in_domain": {
+    "acc": 0.4932,
+    "auc": 0.4903,
+    "n": 2289
+   },
+   "cross_domain": {
+    "acc": 0.4748,
+    "auc": 0.4935,
+    "n": 1190
+   }
+  }
+ }
+}

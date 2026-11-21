@@ -1,0 +1,44 @@
+{
+ "meta": {
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200,
+  "epochs": 80,
+  "seed": 0,
+  "mechanism": "auxiliary failure-map head (not used at inference)"
+ },
+ "runs": {
+  "lambda0.0": {
+   "test": {
+    "iou": 0.7596,
+    "cov50": 0.935,
+    "area_ratio": 1.0368
+   },
+   "val": 0.8005
+  },
+  "lambda0.1": {
+   "test": {
+    "iou": 0.7815,
+    "cov50": 0.96,
+    "area_ratio": 1.0404
+   },
+   "val": 0.8084
+  },
+  "lambda0.5": {
+   "test": {
+    "iou": 0.7779,
+    "cov50": 0.965,
+    "area_ratio": 1.1224
+   },
+   "val": 0.807
+  },
+  "lambda1.0": {
+   "test": {
+    "iou": 0.7788,
+    "cov50": 0.945,
+    "area_ratio": 1.0526
+   },
+   "val": 0.8102
+  }
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "rows": [
+  {
+   "variant": "V0_current",
+   "img": "0000",
+   "clean_pass": 0.7528301886792453,
+   "att_pass": 0.5049528301886792,
+   "clean_block_min": 0.7528301886792453
+  },
+  {
+   "variant": "V0_current",
+   "img": "0002",
+   "clean_pass": 0.7425,
+   "att_pass": 0.4945833333333333,
+   "clean_block_min": 0.7425
+  },
+  {
+   "variant": "V0_current",
+   "img": "0005",
+   "clean_pass": 0.75,
+   "att_pass": 0.5106132075471698,
+   "clean_block_min": 0.75
+  },
+  {
+   "variant": "V0_current",
+   "img": "0006",
+   "clean_pass": 0.7563679245283019,
+   "att_pass": 0.504245283018868,
+   "clean_block_min": 0.7563679245283019
+  },
+  {
+   "variant": "V0_current",
+   "img": "0028",
+   "clean_pass": 0.762719298245614,
+   "att_pass": 0.5043859649122807,
+   "clean_block_min": 0.762719298245614
+  },
+  {
+   "variant": "V0_current",
+   "img": "0030",
+   "clean_pass": 0.7479166666666667,
+   "att_pass": 0.50625,
+   "clean_block_min": 0.7479166666666667
+  },
+  {
+   "variant": "V0_current",
+   "img": "0031",
+   "clean_pass": 0.7556100981767181,
+   "att_pass": 0.511921458625526,
+   "clean_block_min": 0.7556100981767181
+  },
+  {
+   "variant": "V0_current",
+   "img": "0043",
+   "clean_pass": 0.7264150943396226,
+   "att_pass": 0.5125,
+   "clean_block_min": 0.7264150943396226
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0000",
+   "clean_pass": 0.7615566037735849,
+   "att_pass": 0.502122641509434,
+   "clean_block_min": 0.7615566037735849
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0002",
+   "clean_pass": 0.7491666666666666,
+   "att_pass": 0.490625,
+   "clean_block_min": 0.7491666666666666
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0005",
+   "clean_pass": 0.7474056603773584,
+   "att_pass": 0.5129716981132075,
+   "clean_block_min": 0.7474056603773584
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0006",
+   "clean_pass": 0.7658018867924529,
+   "att_pass": 0.49764150943396224,
+   "clean_block_min": 0.7658018867924529
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0028",
+   "clean_pass": 0.7471491228070175,
+   "att_pass": 0.5184210526315789,
+   "clean_block_min": 0.7471491228070175
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0030",
+   "clean_pass": 0.7577083333333333,
+   "att_pass": 0.52,
+   "clean_block_min": 0.7577083333333333
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0031",
+   "clean_pass": 0.7601683029453016,
+   "att_pass": 0.4996493688639551,
+   "clean_block_min": 0.7601683029453016
+  },
+  {
+   "variant": "V1_lowfreq1",
+   "img": "0043",
+   "clean_pass": 0.7363207547169811,
+   "att_pass": 0.49339622641509434,
+   "clean_block_min": 0.7363207547169811
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0000",
+   "clean_pass": 0.7483490566037736,
+   "att_pass": 0.49481132075471695,
+   "clean_block_min": 0.7483490566037736
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0002",
+   "clean_pass": 0.7527083333333333,
+   "att_pass": 0.5035416666666667,
+   "clean_block_min": 0.7527083333333333
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0005",
+   "clean_pass": 0.7540094339622642,
+   "att_pass": 0.5075471698113208,
+   "clean_block_min": 0.7540094339622642
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0006",
+   "clean_pass": 0.7533018867924528,
+   "att_pass": 0.5150943396226415,
+   "clean_block_min": 0.7533018867924528
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0028",
+   "clean_pass": 0.7436403508771929,
+   "att_pass": 0.49956140350877193,
+   "clean_block_min": 0.7436403508771929
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0030",
+   "clean_pass": 0.746875,
+   "att_pass": 0.535625,
+   "clean_block_min": 0.746875
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0031",
+   "clean_pass": 0.7531556802244039,
+   "att_pass": 0.5,
+   "clean_block_min": 0.7531556802244039
+  },
+  {
+   "variant": "V2_lowfreq2",
+   "img": "0043",
+   "clean_pass": 0.7316037735849057,
+   "att_pass": 0.5025943396226416,
+   "clean_block_min": 0.7316037735849057
+  }
+ ],
+ "note": "block lists omitted for size"
+}

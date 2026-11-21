@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "ts": "2026-11-04T07:50:43.398101",
+  "n": 200,
+  "domain": "lama",
+  "source": "attackset_20261001_222447",
+  "editor": "big-lama (simple-lama-inpainting)"
+ },
+ "wam": {
+  "bit_acc_clean": 0.99984375,
+  "bit_acc_att": 0.9996875,
+  "mask_clean": 0.9984084385633468,
+  "mask_att": 0.8044704696536065,
+  "detect_auc_maskarea": 0.997825,
+  "loc_auc": 0.999618698896879,
+  "iou": 0.9669886246109869
+ },
+ "ours": {
+  "clean_fail": 0.247568359375,
+  "top_clean": 0.34433851957321165,
+  "top": 0.48131205096840857,
+  "contrast_clean": 0.09810395456850529,
+  "contrast": 0.19554044760763645,
+  "iou8": 0.5791383321117443,
+  "iou4": 0.7441703013253198
+ },
+ "runtime_sec": 18.1
+}

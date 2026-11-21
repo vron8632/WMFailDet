@@ -1,0 +1,39 @@
+{
+ "meta": {
+  "epochs": 80,
+  "seed": 0,
+  "note": "WAM 0.947 / EditGuard 0.913 are GT-mask supervised, different labels"
+ },
+ "runs": {
+  "base32_800": {
+   "test": {
+    "iou": 0.7526590089294959,
+    "cov50": 0.955,
+    "area_ratio": 1.1647072238130864
+   },
+   "params": 1928417,
+   "val": 0.7861,
+   "split": "train800/val200/test200"
+  },
+  "base64_800": {
+   "test": {
+    "iou": 0.8011386038469381,
+    "cov50": 0.975,
+    "area_ratio": 1.1198836545080773
+   },
+   "params": 7702977,
+   "val": 0.8246,
+   "split": "train800/val200/test200"
+  },
+  "base32_1000": {
+   "test": {
+    "iou": 0.812313577244335,
+    "cov50": 0.98,
+    "area_ratio": 1.0501368869675773
+   },
+   "params": 1928417,
+   "val": 0.778,
+   "split": "train1000/val100/test100 (n_test smaller!)"
+  }
+ }
+}

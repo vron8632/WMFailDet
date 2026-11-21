@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "n_train": 2000,
+  "n_test": 400,
+  "label": "L2 (2x2 layer)",
+  "baseline": {
+   "overall": 0.9347,
+   "small": 0.8754
+  }
+ },
+ "base64_256": {
+  "overall": 0.9355,
+  "tiers": {
+   "small": {
+    "n": 115,
+    "iou": 0.8705,
+    "cov50": 0.9826,
+    "area_ratio": 1.022
+   },
+   "mid": {
+    "n": 178,
+    "iou": 0.9482,
+    "cov50": 1.0,
+    "area_ratio": 1.006
+   },
+   "large": {
+    "n": 85,
+    "iou": 0.9825,
+    "cov50": 1.0,
+    "area_ratio": 1.003
+   },
+   "full": {
+    "n": 22,
+    "iou": 0.9912,
+    "cov50": 1.0,
+    "area_ratio": 1.005
+   }
+  }
+ }
+}
