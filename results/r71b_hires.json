@@ -1,0 +1,11 @@
+{
+ "T3_cross_editor": {
+  "hires_ip2p": {
+   "n_test": 47,
+   "res": "512x512",
+   "iou": 0.2528,
+   "cov50": 1.0,
+   "area_ratio": 4.1399
+  }
+ }
+}
