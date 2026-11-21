@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "delta": 25,
+  "label": "GT bbox mask",
+  "n_train": 2000,
+  "n_test": 400,
+  "note": "same data/config as r70 free-label student"
+ },
+ "gt_upper": {
+  "iou": 0.9872,
+  "val": 0.9871,
+  "tiers": null
+ },
+ "compare": {
+  "free_labels_d25": 0.9491,
+  "seeds": "0.9498/0.9499/0.9477"
+ }
+}

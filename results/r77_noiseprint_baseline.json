@@ -1,0 +1,31 @@
+{
+ "meta": {
+  "method": "Noiseprint++ (TruFor front-end), unsupervised",
+  "n": 400,
+  "thr": 0.5,
+  "min_area": 64,
+  "note": "TruFor official weights are epoch-2 untrained; other passive weights are on Google Drive and unreachable here."
+ },
+ "result": {
+  "iou": 0.0014,
+  "cov50": 0.0,
+  "area_ratio": 0.0605
+ },
+ "threshold_sensitivity_n120": {
+  "thr0.4": {
+   "iou": 0.0026,
+   "cov50": 0.0,
+   "area_ratio": 0.108
+  },
+  "thr0.6": {
+   "iou": 0.0016,
+   "cov50": 0.0,
+   "area_ratio": 0.0518
+  }
+ },
+ "compare": {
+  "ours_free_labels": 0.9491,
+  "ours_gt_upper": 0.9872,
+  "editguard_same_protocol": 0.9272
+ }
+}

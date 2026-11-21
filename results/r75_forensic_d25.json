@@ -1,0 +1,52 @@
+{
+ "meta": {
+  "delta": 25,
+  "n": 450,
+  "n_per_cond": 50,
+  "conditions": [
+   "clean",
+   "jpeg85",
+   "noise2",
+   "edited",
+   "edited_jpeg75",
+   "edited_rotate1",
+   "edited_resize08",
+   "edited_jpeg50",
+   "edited_feather4"
+  ],
+  "thresholds": {
+   "t_area": 0.4982,
+   "s_area": 0.6146
+  },
+  "baseline_delta15": {
+   "teacher": 0.214,
+   "fusion": 0.107
+  }
+ },
+ "cost": {
+  "teacher": {
+   "miss": 0.08,
+   "false_alarm": 0.0,
+   "conservative": 0.4444,
+   "correct": 0.4756,
+   "dangerous": 0.08,
+   "n": 450
+  },
+  "student": {
+   "miss": 0.0889,
+   "false_alarm": 0.0689,
+   "conservative": 0.6556,
+   "correct": 0.1867,
+   "dangerous": 0.1578,
+   "n": 450
+  },
+  "fusion": {
+   "miss": 0.0244,
+   "false_alarm": 0.0689,
+   "conservative": 0.4444,
+   "correct": 0.4622,
+   "dangerous": 0.0933,
+   "n": 450
+  }
+ }
+}
