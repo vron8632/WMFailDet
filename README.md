@@ -1,6 +1,9 @@
-# Watermark Failure as Free Supervision
+# Watermark Failure Is Evidence
 
-**A zero-annotation framework that turns watermark failure maps into a key-free tamper localizer.**
+**Zero-label, key-free tamper localization against generative edits.**
+
+A watermark that fails under a generative edit is not a loss to be prevented — it is a
+pixel-accurate label that costs nothing to collect.
 
 ![Method framework](assets/framework.jpg)
 
