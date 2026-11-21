@@ -1,0 +1,26 @@
+{
+ "meta": {
+  "delta": 25,
+  "n_train": 2000,
+  "n_test": 400,
+  "reference": {
+   "free_labels": 0.9491,
+   "gt_upper": 0.9872,
+   "note": "all at delta=25, 2000 train"
+  }
+ },
+ "runs": {
+  "noisy_boxes": {
+   "iou": 0.6884,
+   "val": 0.6746
+  },
+  "point": {
+   "iou": 0.0009,
+   "val": 0.0005
+  },
+  "image_level": {
+   "iou": 0.2943,
+   "val": 0.2704
+  }
+ }
+}
