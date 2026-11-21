@@ -1,0 +1,26 @@
+{
+ "meta": {
+  "n_train": 2000,
+  "n_val": 400,
+  "n_test": 400,
+  "epochs": 80,
+  "label": "2x2-layer failure map (offline teacher)",
+  "psnr_publish": 38.22,
+  "reference": {
+   "L4_label_base32_2000": 0.851,
+   "GT_upper": 0.903,
+   "EditGuard": 0.913,
+   "WAM": 0.947
+  }
+ },
+ "runs": {
+  "L2_base32": {
+   "test": {
+    "iou": 0.9347,
+    "cov50": 0.995,
+    "area_ratio": 1.005
+   },
+   "val": 0.9368
+  }
+ }
+}

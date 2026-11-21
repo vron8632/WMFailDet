@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "n": 120,
+  "deltas": [
+   8,
+   15,
+   25,
+   40
+  ],
+  "theory": {
+   "P1": "edited-region failure = 1/2 (independent of delta)",
+   "P2": "clean failure = 2Q(delta/(4 sigma))"
+  }
+ },
+ "rows": [
+  {
+   "delta": 8,
+   "n": 117,
+   "clean": 0.2658336672008547,
+   "clean_std": 0.014012137867441017,
+   "inside": 0.5013630059030321,
+   "outside": 0.2759008143956845,
+   "natural": 0.5007011217948718
+  },
+  {
+   "delta": 15,
+   "n": 117,
+   "clean": 0.25033386752136755,
+   "clean_std": 0.01288501024577259,
+   "inside": 0.5024721197083465,
+   "outside": 0.2611227790769349,
+   "natural": 0.5017611511752137
+  },
+  {
+   "delta": 25,
+   "n": 117,
+   "clean": 0.24954927884615385,
+   "clean_std": 0.014090860841537618,
+   "inside": 0.5028502306877038,
+   "outside": 0.25801918611057806,
+   "natural": 0.5003422142094017
+  },
+  {
+   "delta": 40,
+   "n": 117,
+   "clean": 0.24921541132478633,
+   "clean_std": 0.014491086030673249,
+   "inside": 0.5001258992741251,
+   "outside": 0.25716886522932947,
+   "natural": 0.5008930956196581
+  }
+ ],
+ "P1": {
+  "inside_mean": 0.501702813893302,
+  "inside_std": 0.0012261764315086424,
+  "deviation_from_half": 0.0028502306877038475,
+  "verdict": true
+ },
+ "P2": {
+  "obs": [
+   0.2658,
+   0.2503,
+   0.2495,
+   0.2492
+  ],
+  "spread": 0.0166,
+  "slope_per_delta": -0.00041,
+  "p_value": 0.288,
+  "verdict": true,
+  "statement": "clean-image failure rate is delta-independent (0.249-0.266), set by the embed-detect rounding chain, not by Gaussian noise"
+ },
+ "P2_gaussian_model": {
+  "tested": true,
+  "falsified": true,
+  "note": "2Q(delta/4sigma) predicts a steep decay that is NOT observed (R^2 < 0); recorded as a falsified hypothesis"
+ }
+}

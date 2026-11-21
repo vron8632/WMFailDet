@@ -1,0 +1,70 @@
+{
+ "meta": {
+  "n_train": 800,
+  "n_val": 200,
+  "n_test": 200,
+  "epochs": 60,
+  "configs": [
+   "L8",
+   "L4",
+   "L2",
+   "L8+L4",
+   "L8+L4+L2"
+  ],
+  "note": "label resolution ladder; probe scale"
+ },
+ "runs": {
+  "L8": {
+   "test": {
+    "iou": 0.6026,
+    "cov50": 0.93,
+    "area_ratio": 1.5507
+   },
+   "val": 0.6161,
+   "label_iou_vs_gt": 0.5211,
+   "label_coverage": 0.925
+  },
+  "L4": {
+   "test": {
+    "iou": 0.8257,
+    "cov50": 0.995,
+    "area_ratio": 1.1011
+   },
+   "val": 0.8343,
+   "label_iou_vs_gt": 0.7116,
+   "label_coverage": 0.97
+  },
+  "L2": {
+   "test": {
+    "iou": 0.9101,
+    "cov50": 0.985,
+    "area_ratio": 0.9981
+   },
+   "val": 0.9259,
+   "label_iou_vs_gt": 0.6876,
+   "label_coverage": 0.97
+  },
+  "L8+L4": {
+   "test": {
+    "iou": 0.6698,
+    "cov50": 0.985,
+    "area_ratio": 1.4676
+   },
+   "val": 0.6703,
+   "label_iou_vs_gt": 0.6165,
+   "label_coverage": 0.995
+  },
+  "L8+L4+L2": {
+   "test": {
+    "iou": 0.6798,
+    "cov50": 0.98,
+    "area_ratio": 1.4159
+   },
+   "val": 0.6953,
+   "label_iou_vs_gt": 0.6273,
+   "label_coverage": 1.0
+  }
+ },
+ "best": "L2",
+ "best_iou": 0.9101
+}

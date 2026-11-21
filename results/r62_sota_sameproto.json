@@ -1,0 +1,14 @@
+{
+ "meta": {
+  "n": 400,
+  "protocol": "each method uses its own embedder; same COCO originals, same bbox-paste edits, same GT",
+  "note": "r61 L2 student on this split: IoU 0.9347"
+ },
+ "editguard": {
+  "iou": 0.9272,
+  "iou_std": 0.0813,
+  "cov50": 1.0,
+  "area_ratio": 1.088,
+  "n": 400
+ }
+}
