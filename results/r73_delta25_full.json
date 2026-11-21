@@ -1,0 +1,122 @@
+{
+ "meta": {
+  "delta": 25,
+  "label": "2x2",
+  "n_train": 2000,
+  "n_test": 400,
+  "seeds": "0.9491+-0.0012 (r72: .9498/.9499/.9477)"
+ },
+ "tracks": {
+  "T1_main": {
+   "iou": 0.9485,
+   "val": 0.9481,
+   "cov50": 1.0,
+   "area_ratio": 1.005
+  },
+  "T1_tiers": {
+   "small": {
+    "n": 115,
+    "iou": 0.902,
+    "cov50": 1.0,
+    "area_ratio": 1.0
+   },
+   "mid": {
+    "n": 178,
+    "iou": 0.9571,
+    "cov50": 1.0,
+    "area_ratio": 1.008
+   },
+   "large": {
+    "n": 85,
+    "iou": 0.9825,
+    "cov50": 1.0,
+    "area_ratio": 1.005
+   },
+   "full": {
+    "n": 22,
+    "iou": 0.9917,
+    "cov50": 1.0,
+    "area_ratio": 1.007
+   }
+  },
+  "T4_degradation": {
+   "clean": {
+    "iou": 0.9485,
+    "cov50": 1.0,
+    "area_ratio": 1.005
+   },
+   "jpeg85": {
+    "iou": 0.3537,
+    "cov50": 1.0,
+    "area_ratio": 5.42
+   },
+   "jpeg75": {
+    "iou": 0.2966,
+    "cov50": 1.0,
+    "area_ratio": 7.2789
+   },
+   "jpeg50": {
+    "iou": 0.2944,
+    "cov50": 1.0,
+    "area_ratio": 7.3452
+   },
+   "noise2": {
+    "iou": 0.9461,
+    "cov50": 0.9975,
+    "area_ratio": 1.005
+   },
+   "sharpen": {
+    "iou": 0.9366,
+    "cov50": 0.9975,
+    "area_ratio": 0.9998
+   },
+   "resize0.8": {
+    "iou": 0.2944,
+    "cov50": 1.0,
+    "area_ratio": 7.347
+   },
+   "rotate1": {
+    "iou": 0.3901,
+    "cov50": 1.0,
+    "area_ratio": 4.7629
+   },
+   "feather4": {
+    "iou": 0.2944,
+    "cov50": 1.0,
+    "area_ratio": 7.347
+   }
+  },
+  "T2_cross_domain": {
+   "butterfly": {
+    "n": 60,
+    "iou": 0.8069,
+    "cov50": 1.0,
+    "area_ratio": 1.2637
+   },
+   "sat": {
+    "n": 60,
+    "iou": 0.9175,
+    "cov50": 1.0,
+    "area_ratio": 1.076
+   },
+   "doc": {
+    "n": 60,
+    "iou": 0.705,
+    "cov50": 0.95,
+    "area_ratio": 1.2721
+   },
+   "pokemon": {
+    "n": 60,
+    "iou": 0.7983,
+    "cov50": 1.0,
+    "area_ratio": 1.2784
+   }
+  },
+  "T3_lama": {
+   "n_test": 66,
+   "iou": 0.6244,
+   "cov50": 1.0,
+   "area_ratio": 1.9298
+  }
+ }
+}

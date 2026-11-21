@@ -69,7 +69,7 @@ def main():
         items = load_domain(ds, 60)
         eds, gts = [], []
         for sid, o, a_, bb in items:
-            e, al_, g_ = make_pair(str(sid), o, a_, bb)
+            e, al_, g_ = make_pair(str(sid), o, a_, bb, delta=25)
             eds.append(e); gts.append(g_)
         eds = np.array(eds); gts = np.array(gts)
         p = predict(m, eds, dev)
@@ -90,7 +90,7 @@ def main():
         a2 = np.array(Image.open(fa).convert('RGB'))
         if a2.shape[:2] != o.shape[:2]:
             a2 = np.array(Image.fromarray(a2).resize((o.shape[1], o.shape[0]), Image.LANCZOS))
-        e, al_, g_ = make_pair(str(sid), o, r8.crop8(a2), bb)
+        e, al_, g_ = make_pair(str(sid), o, r8.crop8(a2), bb, delta=25)
         eds.append(e); gts.append(g_)
     eds = np.array(eds); gts = np.array(gts)
     split = int(len(eds) * 0.67)

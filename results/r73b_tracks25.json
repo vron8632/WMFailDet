@@ -1,0 +1,38 @@
+{
+ "meta": {
+  "delta": 25,
+  "note": "tracks regenerated with delta=25 to match model"
+ },
+ "T2_cross_domain": {
+  "butterfly": {
+   "n": 60,
+   "iou": 0.9594,
+   "cov50": 1.0,
+   "area_ratio": 0.9982
+  },
+  "sat": {
+   "n": 60,
+   "iou": 0.9656,
+   "cov50": 1.0,
+   "area_ratio": 0.9966
+  },
+  "doc": {
+   "n": 60,
+   "iou": 0.842,
+   "cov50": 0.95,
+   "area_ratio": 0.9527
+  },
+  "pokemon": {
+   "n": 60,
+   "iou": 0.96,
+   "cov50": 1.0,
+   "area_ratio": 1.0034
+  }
+ },
+ "T3_lama": {
+  "n_test": 66,
+  "iou": 0.967,
+  "cov50": 1.0,
+  "area_ratio": 1.0105
+ }
+}
