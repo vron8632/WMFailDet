@@ -30,7 +30,7 @@ def main():
     meta = json.load(open(f'{BASE}/data/bigset/meta.json'))
     ids = [s_['id'] for s_ in meta['samples']
            if os.path.exists(f'{BASE}/data/bigset/images/orig_{s_["id"]}.png')]
-    test_ids, test_orig = ids[-400:], {}
+    test_ids, test_orig = ids[:2800][-400:], {}   # r70 用的是前 2800 张
 
     # 取 N_SHOW 个中等编辑面积的样本
     areas = gt.reshape(len(gt), -1).mean(1)
@@ -87,6 +87,7 @@ def main():
         eg_pred = [np.zeros_like(s['gt']) * 255 for s in samples]
 
     np.savez_compressed(OUT,
+                        sids=np.array([s['sid'] for s in samples]),
                         imgs=np.array([s['img'] for s in samples]),
                         gts=np.array([s['gt'] * 255 for s in samples]),
                         teacher=np.array([s['teacher'] for s in samples]),
