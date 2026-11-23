@@ -112,8 +112,9 @@ with `soffice --headless --convert-to pdf --outdir figs <panel>.pptx`.
 
 Two ways to get the data.
 
-**(a) Download the packaged benchmark** (recommended). The archives are attached to this
-repository's **Releases** page:
+**(a) Download the packaged benchmark** (recommended). The archives are attached to the
+[Releases page](https://github.com/vron8632/WMFailDet/releases/tag/v1.0-keyfree-bench) (≈1.3 GB in
+total; mirrored copies on a domestic file host are welcome — please keep the archive names):
 
 | Archive | Content |
 |---|---|
