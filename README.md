@@ -95,19 +95,6 @@ python code/r78_qual_compare.py       # qualitative panels
 Every script writes a JSON file under `results/`; the numbers in the tables above are read from
 those files (`results/r7x_*.json`).
 
-Figures can be rebuilt from the same results:
-
-```bash
-python figures_scripts/make_figs_d2.py         # data figures
-python figures_scripts/make_fig_qual.py        # qualitative panel
-python figures_scripts/make_fig_combined.py    # t-SNE + capability profile
-python figures_scripts/make_framework_mask.py  # source images of the framework panel
-python figures_scripts/make_fig_motivation.py  # motivation panel
-```
-
-The editable PowerPoint sources of the two panels are in `figures_scripts/source/`; export them
-with `soffice --headless --convert-to pdf --outdir figs <panel>.pptx`.
-
 ## Dataset
 
 Two ways to get the data.
@@ -150,8 +137,6 @@ data/
 
 ```
 code/               experiment and evaluation scripts (r*.py, numbered by experiment)
-figures_scripts/    scripts that render every figure (+ source/ PowerPoint panels)
-figs/               rendered figures (PDF/PNG)
 results/            per-experiment JSON outputs
 assets/             images used by this README
 tools/              dataset packaging helper

@@ -27,3 +27,7 @@ data_packages/
 # local notes / editor artifacts
 提示词*.txt
 fix_*.py
+
+# paper figures and their rendering scripts live locally only
+figs/
+figures_scripts/
