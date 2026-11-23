@@ -170,4 +170,5 @@ tools/              dataset packaging helper
 
 ## License
 
-Research code, provided as is for academic use.
+Released under the [MIT License](LICENSE) — free to use, modify, and redistribute, including for
+commercial purposes, provided the copyright notice is retained.
