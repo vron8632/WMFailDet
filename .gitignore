@@ -18,3 +18,12 @@ __pycache__/
 results/*.npz
 results/*.npy
 results/*.pth
+
+# release packaging workspace (archives are hosted separately, never committed)
+/tmp/pkg*
+data_packages/
+*.zip
+
+# local notes / editor artifacts
+提示词*.txt
+fix_*.py

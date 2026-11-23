@@ -225,8 +225,8 @@ def fig_combined():
     X = StandardScaler().fit_transform(F)
     E = TSNE(n_components=2, perplexity=30, random_state=0, init='pca').fit_transform(X)
 
-    fig = plt.figure(figsize=(6.5, 3.05))
-    gs = GridSpec(1, 2, width_ratios=[1, 1.28], wspace=0.30)
+    fig = plt.figure(figsize=(6.6, 3.05))
+    gs = GridSpec(1, 2, width_ratios=[1, 1.24], wspace=0.55)
 
     # (a) t-SNE
     ax = fig.add_subplot(gs[0])

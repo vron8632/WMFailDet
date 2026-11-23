@@ -181,7 +181,7 @@ def main():
     prs = Presentation(); s = slide(prs, 16.0, 9.05)
 
     txt(s, 0.0, 0.18, 16.0, 0.38,
-        "Watermark Failure Distillation for Key-Free Tamper Localization",
+        "Watermark Failure Distillation for Key-Free Manipulation Localization",
         fs=19, bold=True, align=PP_ALIGN.CENTER)
 
     # ================= TRAINING =================

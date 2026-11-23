@@ -1,0 +1,12 @@
+# Core
+numpy>=1.23
+opencv-python>=4.7
+pillow>=9.4
+torch>=2.0
+# Experiments / figures
+scikit-learn>=1.2
+scikit-image>=0.21
+matplotlib>=3.7
+# Figure sources (editable PowerPoint panels)
+python-pptx>=0.6.21
+pymupdf>=1.23
